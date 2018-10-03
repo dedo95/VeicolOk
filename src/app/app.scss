@@ -1,0 +1,80 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.scroll-content {
+    overflow-y: auto;
+}
+
+.toolbar-background-md {
+    background: #ffb128;
+}
+
+.tabs-md .tabbar {
+    background: #dfdfdf;
+}
+
+.tabs-md .tab-button {
+    color: #000;
+}
+
+.tabs-md .tab-button[aria-selected=true] {
+    color: #000;
+}
+
+.tabs-md .tab-button-icon {
+    color: #000;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: #000;
+}
+
+.segment-ios .segment-button {
+    border-color: #ffb128;
+    color: #000;
+}
+
+.segment-ios .segment-button.segment-activated {
+    color: #000;
+    background-color:#fffbaa;
+}
+
+#logout{
+    border-color: red;
+    color: black;
+    background-color: rgb(208, 70, 52);
+}
+
+ .login_button{
+        background-color: #ffb128;
+        color: #000;
+    }
+
+    .login_button:focus{
+        border-color: #ffb128;
+        outline: 2px solid #ffb128;
+        -webkit-box-shadow: 0 0 8px 1px #fffbaa;
+        box-shadow: 0 0 8px 1px #fffbaa;
+    }
+
+    .login_button:hover:not(.disable-hover){
+        background-color: #fffbaa;
+    }
+
+    .register_button{
+        background-color: #dfdfdf;
+    }

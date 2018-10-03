@@ -1,0 +1,7 @@
+{
+  "name": "VOK",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

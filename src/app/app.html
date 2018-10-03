@@ -1,0 +1,55 @@
+<ion-menu [content]="content">
+
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Pages</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <ion-item style="background-color:#fffbaa"></ion-item>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
+                {{p.title}}
+                <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+            </button> 
+            <ion-item color="none" menuClose="" style="text-align:center;">
+                Lingua
+           
+            </ion-item>
+            
+                <ion-segment mode="ios" [(ngModel)]="selectedTab">
+                    <ion-segment-button value="Italiano" >
+                        Italiano
+                    </ion-segment-button>
+                    <ion-segment-button value="Inglese">
+                        Inglese
+                    </ion-segment-button>
+                </ion-segment>
+            <ion-item-divider></ion-item-divider>
+            <ion-item style="background-color:#fffbaa"></ion-item>
+            <ion-item>
+            <button ion-button outline default block id="logout">
+                Esci
+                <ion-icon name="md-exit"></ion-icon>
+            </button>
+            </ion-item>
+        </ion-list>
+       <!-- <ion-row>
+            <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="light">
+                    Italiano
+                </button>
+            </ion-col>
+            <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="light">
+                    Inglese
+                </button>
+            </ion-col>
+        </ion-row>-->
+        
+    </ion-content>
+</ion-menu>
+
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>
