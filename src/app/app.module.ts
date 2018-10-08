@@ -16,6 +16,7 @@ import { ChiSiamoPage } from '../pages/chi-siamo/chi-siamo';
 import { LoginPage } from '../pages/login/login';
 import { RegistrazionePage } from '../pages/registrazione/registrazione';
 import { RecuperaPswPage } from '../pages/recupera-psw/recupera-psw';
+import { AggiungiveicoloPage } from '../pages/aggiungiveicolo/aggiungiveicolo';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RecuperaPswPage } from '../pages/recupera-psw/recupera-psw';
     ChiSiamoPage,
     LoginPage,
     RegistrazionePage,
-    RecuperaPswPage
+    RecuperaPswPage,
+    AggiungiveicoloPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { RecuperaPswPage } from '../pages/recupera-psw/recupera-psw';
     ChiSiamoPage,
     LoginPage,
     RegistrazionePage,
-    RecuperaPswPage
+    RecuperaPswPage,
+    AggiungiveicoloPage
   ],
   providers: [
     StatusBar,
