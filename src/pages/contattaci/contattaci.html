@@ -18,11 +18,24 @@
     <ion-icon name="md-mail" item-start></ion-icon>
     <ion-input placeholder="Email"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-input placeholder="Oggetto"></ion-input>
+  <!--<ion-item>
+    <ion-input placeholder="Oggetto" class="oggetto"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-textarea class="my_text_area"></ion-textarea>
+    <ion-textarea class="my_text_area" placeholder="Messaggio"></ion-textarea>
   </ion-item>
-</ion-list>
+-->
+  </ion-list>
+
+<ion-card>
+  <ion-input placeholder="Oggetto" class="oggetto"></ion-input>
+<ion-textarea class="my_text_area" placeholder="Messaggio"></ion-textarea>
+
+  </ion-card>
+
+    <ion-item class="center_button">
+      <button ion-button class="login_button"icon-end>Invia
+      <ion-icon name="ios-send"></ion-icon>
+      </button>
+    </ion-item>
 </ion-content>

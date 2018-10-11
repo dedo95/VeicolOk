@@ -92,3 +92,26 @@
     .link_icon{
         zoom:1.5;
     }
+
+    .item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: none;
+    }
+
+    .list-md .item-input:last-child {
+        border-bottom: none;
+    }
+
+    .item-md.item-input.item-input-has-focus .item-inner,
+    .item-md.item-input.input-has-focus .item-inner {
+        border-bottom-color: #dfdfdf;
+        -webkit-box-shadow: inset 0 -1px 0 0 #dfdfdf;
+        box-shadow: inset 0 -1px 0 0 #dfdfdf;
+    }
+
+    .list-md .item-input.item-input-has-focus:last-child,
+    .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: #dfdfdf;
+        -webkit-box-shadow: inset 0 -1px 0 0 #dfdfdf;
+        box-shadow: inset 0 -1px 0 0 #dfdfdf;
+    }
