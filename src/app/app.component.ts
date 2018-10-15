@@ -7,6 +7,7 @@ import { ContattaciPage } from '../pages/contattaci/contattaci';
 import { ChiSiamoPage } from '../pages/chi-siamo/chi-siamo';
 import { LoginPage } from '../pages/login/login';
 
+
 @Component({
   templateUrl: 'app.html'
 })
