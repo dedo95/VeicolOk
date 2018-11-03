@@ -1,29 +1,32 @@
 <ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar text-center class="title_noicon">
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Login</ion-title> 
+    </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding center text-center>
-
-  <ion-list>
-    <ion-item>
-      <ion-icon name="md-mail" item-start></ion-icon>
-      <ion-input placeholder="Email" type="email" clearInput></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="md-lock" item-start></ion-icon>
-      <ion-input placeholder="Password" type="password" clearInput></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button full class="login_button" (click)="login()">Login</button>
-  <ion-item text-center (click)="goRecupera()"><a href="#"> Password Dimenticata?</a></ion-item>
-  <button ion-button full color="light" (click)="goRegister()" class="register_button">Registrati</button>
+  <form #loginform="ngForm">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-icon name="md-mail" item-start></ion-icon>
+        <ion-input name="email" placeholder="Email" type="email" clearInput required></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-icon name="md-lock" item-start></ion-icon>
+        <ion-input placeholder="Password" type="password" clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+    <button ion-button full class="login_button" (click)="login()">Login</button>
+  
+    <ion-item text-center (click)="goRecupera()"><a href="#"> {{'PSD_NO' | translate}} </a></ion-item>
+  
+    <button ion-button full color="light" (click)="goRegister()" class="register_button"> {{'Registrati' | translate}} </button>
 
 </ion-content>

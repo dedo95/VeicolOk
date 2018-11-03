@@ -1,32 +1,30 @@
-<!--
-  Generated template for the RegistrazionePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Registrazione</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar text-center>
+    <ion-navbar>
+      <ion-title> {{'Registrazione' | translate}} </ion-title>
+    </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Name"></ion-input>
+      <ion-input placeholder="{{'Nome' | translate}}"></ion-input>
     </ion-item>
+    
     <ion-item>
-      <ion-input placeholder="Second Name"></ion-input>
+      <ion-input placeholder="{{'Cognome' | translate}}"></ion-input>
     </ion-item>
+    
     <ion-item>
       <ion-input placeholder="Email"></ion-input>
     </ion-item>
+    
     <ion-item>
       <ion-input placeholder="Password"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button full class="login_button">Sign Up</button>
+  
+  <button ion-button full class="login_button"> {{'Registrati' | translate}} </button>
 </ion-content>

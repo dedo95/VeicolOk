@@ -1,10 +1,12 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Contattaci</ion-title>
-  </ion-navbar>
+  <ion-toolbar text-center>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'Contattaci' | translate}}</ion-title>
+    </ion-navbar>
+  </ion-toolbar>
 </ion-header>
 
 
@@ -21,13 +23,13 @@
 </ion-list>
 
 <ion-card>
-  <ion-input placeholder="Oggetto" class="oggetto"></ion-input>
-  <ion-textarea class="my_text_area" placeholder="Messaggio"></ion-textarea>
+  <ion-input placeholder="{{'Obj' | translate}}" class="oggetto"></ion-input>
+  <ion-textarea class="my_text_area" placeholder="{{'Msg' | translate}}"></ion-textarea>
 
 </ion-card>
 
     <ion-item class="center_button">
-      <button ion-button class="login_button"icon-end>Invia
+      <button ion-button class="login_button"icon-end>{{'Send_Button'|translate}}
       <ion-icon name="ios-send"></ion-icon>
       </button>
     </ion-item>
