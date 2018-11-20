@@ -208,10 +208,11 @@ a.item-ios:not([detail-none]) .item-inner {
 .ios ion-nav > .ion-page > ion-header > .toolbar.statusbar-padding:first-child,
 .ios ion-tab > .ion-page > .toolbar.statusbar-padding:first-child,
 .ios ion-tab > .ion-page > ion-header > .toolbar.statusbar-padding:first-child,
+.ios ion-tab > .ion-page > ion-header > .toolbar.statusbar-padding:first-child ion-title,
 .ios ion-tabs > .ion-page.tab-subpage > ion-header > .toolbar.statusbar-padding:first-child,
 .ios ion-menu > .menu-inner > .toolbar.statusbar-padding:first-child,
 .ios ion-menu > .menu-inner > ion-header > .toolbar.statusbar-padding:first-child {
-  padding-top: calc(env(safe-area-inset-top) + 25px);
+  padding-top: calc(env(safe-area-inset-top) + 10px);
 }
 
 .scroll-content::-webkit-scrollbar {
