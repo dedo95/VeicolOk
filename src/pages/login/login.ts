@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegistrazionePage } from '../registrazione/registrazione';
 import { RecuperaPswPage } from '../recupera-psw/recupera-psw';
-import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 
 /**

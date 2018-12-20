@@ -25,6 +25,7 @@ import { AggiungiMembroPage} from '../pages/aggiungi-membro/aggiungi-membro';
 import { LinguaService } from '../services/lingua.service';
 
 
+
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -62,7 +63,7 @@ export function createTranslateLoader(http: HttpClient) {
       name: 'myunivaq__db',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
