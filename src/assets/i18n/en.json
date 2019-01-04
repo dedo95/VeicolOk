@@ -26,6 +26,11 @@
     "Nome": "Name",
     "Cognome":"Surname",
     "Crea Famiglia": "Create Family",
-    "Crea Patente": "Create  Driving License"
+    "Crea Patente": "Create  Driving License",
+    "LOGIN_TITLE": "Login",
+    "LOGIN_ERROR_TITLE": "Login error",
+    "LOGIN_ERROR_SUB_TITLE": "Username and/or password Wrong!",
+    "Registrazione_Title": "Registrazione Completata",
+    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login"
 
 }

@@ -9,5 +9,58 @@
 
 
 <ion-content padding>
+<form #veicoloForm="ngForm" novalidate (ngSubmit)="creaVeicolo(veicoloForm)">
+
+  <ion-item>
+    <ion-input placeholder="Targa" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel" type="text"></ion-input>
+  </ion-item>
+  <div ion-text [hidden]="targa.valid || targa.pristine" color="danger" padding-left>
+    codice richiesto
+  </div>
+
+  <ion-item>
+    <ion-input placeholder="Alimentazione" name="alimentazione" required [(ngModel)]="veicolo.alimentazione"
+      #alimentazione="ngModel"></ion-input>
+  </ion-item>
+  <div ion-text [hidden]="alimentazione.valid || alimentazione.pristine" color="danger" padding-left>
+    nome richiesto
+  </div>
+
+  <ion-item>
+    <ion-input placeholder="Anno Immatricolazione" name="anno_immatricolazione" required [(ngModel)]="veicolo.anno_immatricolazione"
+      #anno_immatricolazione="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Cavalli" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Cilindrata" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Colore" name="colore" required [(ngModel)]="veicolo.colore" #colore="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Descrizione" name="descrizione" required [(ngModel)]="veicolo.descrizione" #descrizione="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Immagine" name="img" required [(ngModel)]="veicolo.img" #img="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Kilowatt" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input placeholder="Tipologia" name="tipologia" required [(ngModel)]="veicolo.tipologia" #tipologia="ngModel"></ion-input>
+  </ion-item>
+
+  <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Registrati </button>
+
+</form>
 
 </ion-content>

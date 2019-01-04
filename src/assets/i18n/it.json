@@ -26,5 +26,10 @@
     "Nome": "Nome",
     "Cognome": "Cognome",
     "Crea Famiglia": "Crea Famiglia",
-    "Crea Patente": "Crea Patente"
+    "Crea Patente": "Crea Patente",
+    "LOGIN_ERROR_SUB_TITLE": "Username e/o password errate!",
+    "LOGIN_TITLE": "Login",
+    "LOGIN_ERROR_TITLE": "Errore Login",
+    "Registrazione_Title": "Registrazione Completata",
+    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login"
 }

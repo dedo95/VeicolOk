@@ -8,23 +8,32 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <form #loginForm="ngForm"  novalidate (ngSubmit)="onLogin(loginForm)">
+
     <ion-item>
-      <ion-input placeholder="{{'Nome' | translate}}"></ion-input>
+      <ion-input placeholder="{{'Nome' | translate}}" name="nome" required [(ngModel)]="user.nome" #nome="ngModel"></ion-input>
     </ion-item>
-    
+    <div ion-text [hidden]="nome.valid || nome.pristine" color="danger" padding-left>
+      nome richiesto
+    </div>
+
     <ion-item>
-      <ion-input placeholder="{{'Cognome' | translate}}"></ion-input>
+      <ion-input placeholder="{{'Cognome' | translate}}" name="cognome" required [(ngModel)]="user.cognome" #cognome="ngModel"></ion-input>
     </ion-item>
-    
+
     <ion-item>
-      <ion-input placeholder="Email"></ion-input>
+      <ion-input placeholder="Data Nascita" name="nascita" required [(ngModel)]="user.d_nascita" #d_nascita="ngModel"></ion-input>
     </ion-item>
-    
+
     <ion-item>
-      <ion-input placeholder="Password"></ion-input>
+      <ion-input placeholder="Email" name="email" required [(ngModel)]="user.email" #email="ngModel"></ion-input>
     </ion-item>
-  </ion-list>
-  
-  <button ion-button full class="login_button"> {{'Registrati' | translate}} </button>
+
+    <ion-item>
+      <ion-input placeholder="Password" name="password" required [(ngModel)]="user.password" #password="ngModel" type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button full type="submit" [disabled]="!loginForm.form.valid"> {{'Registrati' | translate}} </button>
+
+  </form>
 </ion-content>

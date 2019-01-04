@@ -1,15 +1,21 @@
 import { Component, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import {Platform, MenuController, Nav, Events, AlertController} from 'ionic-angular';
 import { LinguaService,Lingua } from '../services/lingua.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
+import { UTENTE_STORAGE } from '../constants';
 
 
 //Pages
 import { ContattaciPage } from '../pages/contattaci/contattaci';
 import { ChiSiamoPage } from '../pages/chi-siamo/chi-siamo';
 import { LoginPage } from '../pages/login/login';
+import {Utente} from "../model/utente.model";
+import {TabsPage} from "../pages/tabs/tabs";
+import {UtenteService} from "../services/utente.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 
 
@@ -19,25 +25,31 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   linguaPreferita: string;
   lingue: Array<Lingua>;
-  rootPage:any=LoginPage;
-  pages: Array<{ title: string, component: any,icon:string }>;
+  rootPage: any = LoginPage;
+  pages: Array<{ title: string, component: any, icon: string }>;
   @ViewChild(Nav) nav: Nav;
-  lang:string;
+  lang: string;
+  utente: Utente;
 
-  constructor(public platform: Platform, 
+  constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public menu: MenuController,
               private linguaService: LinguaService,
-              private translate: TranslateService
-              ) {
+              private translate: TranslateService,
+              public storage: Storage,
+              public events: Events,
+              private utenteService: UtenteService,
+              public alertCtrl: AlertController
+  ) {
     this.initTranslate();
+    this.subscribeToEvents();
     this.initializeApp();
     // set our app's pages
     this.pages = [
-      { title: 'Contattaci', component: ContattaciPage, icon:"ios-chatbubbles-outline" },
-      { title: 'Chi Siamo', component: ChiSiamoPage, icon:"ios-information-circle-outline"},
-     ]; 
+      {title: 'Contattaci', component: ContattaciPage, icon: "ios-chatbubbles-outline"},
+      {title: 'Chi Siamo', component: ChiSiamoPage, icon: "ios-information-circle-outline"},
+    ];
   }
 
   initTranslate() {
@@ -52,10 +64,10 @@ export class MyApp {
         this.linguaService.updateLingua(linguaPreferita);
 
       }
-      if (lingua==='it') {
-        this.lang="italiano";
+      if (lingua === 'it') {
+        this.lang = "italiano";
       } else {
-        this.lang="inglese";
+        this.lang = "inglese";
       }
     })
   }
@@ -63,6 +75,14 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.utenteService.getUtente().subscribe((utente: Utente) => {
+        if (utente != null) {
+          this.utente = utente;
+          this.rootPage = TabsPage;
+        } else {
+          this.rootPage = LoginPage;
+        }
+      });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
@@ -76,16 +96,57 @@ export class MyApp {
     //this.nav.push(page.component);
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
-    
+
   }
 
-  click_on(value){
+  click_on(value) {
     this.translate.use(value);
     this.linguaService.updateLingua(value);
   }
 
   logout() {
     this.menu.close();
+    this.storage.remove(UTENTE_STORAGE);
     this.nav.setRoot(LoginPage);
   }
+
+  subscribeToEvents() {
+    this.events.subscribe('login', (utente: Utente) => {
+      this.utente = utente;
+      this.nav.setRoot(TabsPage);
+    });
+    this.events.subscribe('server-error', (err: HttpErrorResponse) => {
+      this.showMessageServerError(err);
+    });
+  }
+
+  showMessageServerError(err: HttpErrorResponse) {
+    let errorMessage = "Errore nel server";
+
+    switch (err.status) {
+      case 403:
+        errorMessage = "Utente non autorizzato";
+        break;
+      case 401:
+        errorMessage = "Utente non autenticato";
+        break;
+      default:
+        errorMessage = `Errore: ${err.status}`;
+    }
+    let alert = this.alertCtrl.create({
+      title: "Errore",
+      subTitle: errorMessage,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.utenteService.logout();
+            this.nav.setRoot(LoginPage);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
 }

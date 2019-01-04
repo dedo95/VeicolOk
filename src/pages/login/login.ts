@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, Events, IonicPage, NavController, NavParams} from 'ionic-angular';
 import { RegistrazionePage } from '../registrazione/registrazione';
 import { RecuperaPswPage } from '../recupera-psw/recupera-psw';
-import { TabsPage } from '../tabs/tabs';
+import { Account, UtenteService } from '../../services/utente.service';
+import {HttpErrorResponse} from "@angular/common/http";
+import {Utente} from "../../model/utente.model";
+import { TranslateService} from "@ngx-translate/core";
 
 /**
  * Generated class for the LoginPage page.
@@ -18,15 +21,36 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loginTitle: string;
+  loginSubTitle: string;
+  account: Account = { username:"dedo@gmail.com", password:"pippo" };
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utenteService: UtenteService,public events: Events,  public alertCtrl: AlertController, public translateService: TranslateService) {
   }
 
   login(){
-    this.navCtrl.push(TabsPage);
+    console.log(this.account);
+      this.utenteService.login(this.account)
+        .subscribe((utente: Utente) => {
+            this.events.publish('login', utente);
+          },
+          (err: HttpErrorResponse) => {
+            if (err.status == 401) {
+              console.error('login request error: ' + err.status);
+              this.showLoginError();
+            }
+          });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad LoginPage');
+    this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
+      this.loginSubTitle = data;
+    });
+    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
+      this.loginTitle = data;
+    });
   }
 
   goRegister(){
@@ -36,4 +60,18 @@ export class LoginPage {
   goRecupera(){
     this.navCtrl.push(RecuperaPswPage);
   }
+
+  stampa(){
+    this.utenteService.stamp();
+  }
+
+  showLoginError() {
+    let alert = this.alertCtrl.create({
+      title: this.loginTitle,
+      subTitle: this.loginSubTitle,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }
