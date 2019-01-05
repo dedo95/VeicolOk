@@ -1,4 +1,4 @@
-export class Veicolo{
+export class Veicolo {
     targa: String;
     desc: String;
     tipologia: String;

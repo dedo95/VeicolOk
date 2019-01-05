@@ -1,4 +1,4 @@
-export class Famiglia{
+export class Famiglia {
     Id_famiglia: String;
     nome: String;
     

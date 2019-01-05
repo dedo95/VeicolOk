@@ -1,4 +1,4 @@
-export class Scadenze{
+export class Scadenze {
     Id_s: String;
     descrizione: String;
     importo: bigint;

@@ -1,4 +1,4 @@
-export class Patente{
+export class Patente {
     num_patente: String;
     intestatario: String;
     punti: BigInteger;
