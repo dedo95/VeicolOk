@@ -15,4 +15,46 @@
 
 <ion-content padding>
 
+  <ion-item no-lines>
+    <ion-avatar>
+      <img src="../../assets/imgs/logo.png" [(ngModel)]="image" ngDefaultControl style="width: 150px;height: 150px;">
+    </ion-avatar>
+
+    <div class="upload-btn-wrapper">
+      <button class="btn">Upload Image</button>
+      <input type="file" name="myfile" />
+    </div>
+  </ion-item>
+
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label color="black">{{'DESCRIZIONE'|translate}} : <b>{{veicolo.descrizione.toUpperCase()}} </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'TARGA'|translate}} : <b>{{veicolo.targa.toUpperCase()}} </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'ANNO'|translate}} : <b>{{veicolo.anno_immatricolazione.toUpperCase()}} </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'COLORE'|translate}} : <b>{{veicolo.colore.toUpperCase()|translate}} </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'CAVALLI'|translate}} : <b>{{veicolo.cavalli}} </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'CILINDRATA'|translate}} : <b>{{veicolo.cilindrata}} cc </b> </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">Kilowatt : <b>{{veicolo.kw}} </b> </ion-label>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>

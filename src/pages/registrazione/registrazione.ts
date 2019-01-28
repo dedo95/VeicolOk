@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 import {UtenteService} from "../../services/utente.service";
 import {LoginPage} from "../login/login";
 import { TranslateService} from "@ngx-translate/core";
+import {Utente} from "../../model/utente.model";
 
 
 @IonicPage()
@@ -13,13 +14,7 @@ import { TranslateService} from "@ngx-translate/core";
 })
 export class RegistrazionePage {
 
-  user={
-    nome:'',
-    cognome:'',
-    d_nascita:'',
-    email:'',
-    password:'',
-  };
+  user:Utente=new Utente();
 
   registrazioneTitle: string;
   registrazioneSubTitle: string;

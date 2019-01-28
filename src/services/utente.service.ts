@@ -24,7 +24,7 @@ export class UtenteService {
         return this.http.get(URL.URL_VEICOLI);
     }
 
-    create(user: any) {
+    create(user: Utente) {
         console.log("INIZIO");
         return this.http.post(URL.API_USE, user).toPromise()
             .then((response: Response) => {

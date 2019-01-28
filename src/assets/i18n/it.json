@@ -1,11 +1,11 @@
 {
-    "Contattaci": "Contattaci",
-    "Send_Button": "Invia",
+    "CONTATTACI": "Contattaci",
+    "SEND_BUTTON": "Invia",
     "Veicoli": "Veicoli",
     "Famigliare": "Famigliare",
     "Famiglia": "Famiglia",
     "PSD_NO": "Password dimenticata?",
-    "Registrati": "Registrati",
+    "REGISTRATI": "Registrati",
     "Obj": "Oggetto",
     "Msg": "Messaggio",
     "Info": "Chi Siamo",
@@ -21,7 +21,7 @@
     "ITALIANO": "Italiano",
     "INGLESE": "Inglese",
     "ESCI": "Esci",
-    "Chi Siamo": "Chi Siamo",
+    "CHI_SIAMO": "Chi Siamo",
     "Registrazione": "Registrazione",
     "Nome": "Nome",
     "Cognome": "Cognome",
@@ -31,5 +31,18 @@
     "LOGIN_TITLE": "Login",
     "LOGIN_ERROR_TITLE": "Errore Login",
     "Registrazione_Title": "Registrazione Completata",
-    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login"
+    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login",
+    "DATA": "Data di Nascita :",
+    "DESCRIZIONE": "Descrizione",
+    "TARGA": "Targa",
+    "ANNO": "Anno Immatricolazione",
+    "COLORE": "Colore",
+    "NERO": "NERO",
+    "ROSSO": "ROSSO",
+    "GIALLO": "GIALLO",
+    "VERDE": "VERDE",
+    "GRIGIO": "GRIGIO",
+    "CAVALLI": "CAVALLI",
+    "CILINDRATA": "CILINDRATA"
+
 }

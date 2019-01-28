@@ -18,13 +18,18 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
   <ion-list>
     <ion-item-sliding *ngFor="let veicolo of veicoli">
       <ion-item (click)="openDetail(veicolo)">
-        {{veicolo.descrizione}}
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/logo.png">
+        </ion-avatar>
+        <ion-title>{{veicolo.descrizione}}</ion-title>
+
       </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger" (click)="delete(veicolo)">
+      <ion-item-options side="right" (click)="delete(veicolo)">
+        <button ion-button color="primary" >
           <ion-icon name="trash"></ion-icon> Elimina
         </button>
       </ion-item-options>

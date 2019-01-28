@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {Platform, MenuController, Nav, Events, AlertController} from 'ionic-angular';
+import {Platform, MenuController, Nav, Events, AlertController, NavController} from 'ionic-angular';
 import { LinguaService,Lingua } from '../services/lingua.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
@@ -16,6 +16,7 @@ import {Utente} from "../model/utente.model";
 import {TabsPage} from "../pages/tabs/tabs";
 import {UtenteService} from "../services/utente.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ProfiloPage} from "../pages/profilo/profilo";
 
 
 
@@ -25,11 +26,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class MyApp {
   linguaPreferita: string;
   lingue: Array<Lingua>;
-  rootPage: any = LoginPage;
+  rootPage: any ;
   pages: Array<{ title: string, component: any, icon: string }>;
   @ViewChild(Nav) nav: Nav;
   lang: string;
   utente: Utente;
+  isLogged:boolean;
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
@@ -44,11 +46,25 @@ export class MyApp {
   ) {
     this.initTranslate();
     this.subscribeToEvents();
-    this.initializeApp();
+    this.platform.ready().then(() => {
+      this.utenteService.getUtente().subscribe((utente: Utente) => {
+        if (utente != null) {
+          this.utente = utente;
+          this.rootPage = TabsPage;
+          this.isLogged=true;
+        } else {
+          this.rootPage = LoginPage;
+        }
+      });
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
     // set our app's pages
     this.pages = [
-      {title: 'Contattaci', component: ContattaciPage, icon: "ios-chatbubbles-outline"},
-      {title: 'Chi Siamo', component: ChiSiamoPage, icon: "ios-information-circle-outline"},
+      {title: 'CONTATTACI', component: ContattaciPage, icon: "ios-chatbubbles-outline"},
+      {title: 'CHI_SIAMO', component: ChiSiamoPage, icon: "ios-information-circle-outline"},
     ];
   }
 
@@ -73,7 +89,7 @@ export class MyApp {
   }
 
 
-  initializeApp() {
+  /*initializeApp() {
     this.platform.ready().then(() => {
       this.utenteService.getUtente().subscribe((utente: Utente) => {
         if (utente != null) {
@@ -89,13 +105,13 @@ export class MyApp {
       this.splashScreen.hide();
     });
   }
-
+*/
   openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
-    //this.nav.push(page.component);
+    this.nav.push(page.component);
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+    //this.nav.setRoot(page.component);
 
   }
 
@@ -106,7 +122,8 @@ export class MyApp {
 
   logout() {
     this.menu.close();
-    this.storage.remove(UTENTE_STORAGE);
+    this.utenteService.logout();
+    this.isLogged=false;
     this.nav.setRoot(LoginPage);
   }
 
@@ -114,6 +131,7 @@ export class MyApp {
     this.events.subscribe('login', (utente: Utente) => {
       this.utente = utente;
       this.nav.setRoot(TabsPage);
+      this.isLogged=true;
     });
     this.events.subscribe('server-error', (err: HttpErrorResponse) => {
       this.showMessageServerError(err);
@@ -140,13 +158,18 @@ export class MyApp {
         {
           text: 'Ok',
           handler: () => {
-            this.utenteService.logout();
+            this.logout();
             this.nav.setRoot(LoginPage);
           }
         }
       ]
     });
     alert.present();
+  }
+
+  goToProfilo(){
+    this.menu.close();
+    this.nav.push(ProfiloPage);
   }
 
 }

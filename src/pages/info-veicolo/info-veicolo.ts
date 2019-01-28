@@ -15,11 +15,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InfoVeicoloPage {
 
+  veicolo = {
+    targa: '',
+    alimentazione: '',
+    anno_immatricolazione: '',
+    cavalli: '',
+    cilindrata: '',
+    colore: '',
+    descrizione: '',
+    img: '',
+    kw: '',
+    tipologia: '',
+    utente: {}
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoVeicoloPage');
+    this.veicolo=this.navParams.data;
+    console.log(this.veicolo);
   }
 
 }

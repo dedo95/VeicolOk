@@ -29,7 +29,6 @@ export class TokenInterceptor implements HttpInterceptor {
                 }
             });
         } else {
-          console.log("pippo");
             return next.handle(req);
         }
 

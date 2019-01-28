@@ -10,6 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 
 import { UtenteService } from '../services/utente.service';
@@ -31,6 +33,8 @@ import { AggiungiveicoloPage } from '../pages/aggiungiveicolo/aggiungiveicolo';
 import { FamigliaPage} from '../pages/famiglia/famiglia';
 import { AggiungiMembroPage} from '../pages/aggiungi-membro/aggiungi-membro';
 import {TokenInterceptor} from "../interceptors/token.interceptor";
+import {InfoVeicoloPage} from "../pages/info-veicolo/info-veicolo";
+import {PatenteService} from "../services/patente.service";
 
 
 
@@ -55,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
     RecuperaPswPage,
     AggiungiveicoloPage,
     FamigliaPage,
-    AggiungiMembroPage
+    AggiungiMembroPage,
+    InfoVeicoloPage
     
   ],
   imports: [
@@ -82,7 +87,7 @@ export function createTranslateLoader(http: HttpClient) {
     PatentePage,
     HomePage,
     TabsPage,
-    ContattaciPage, 
+    ContattaciPage,
     ProfiloPage,
     ChiSiamoPage,
     LoginPage,
@@ -90,7 +95,8 @@ export function createTranslateLoader(http: HttpClient) {
     RecuperaPswPage,
     AggiungiveicoloPage,
     FamigliaPage,
-    AggiungiMembroPage
+    AggiungiMembroPage,
+    InfoVeicoloPage
   ],
   providers: [
     StatusBar,
@@ -99,8 +105,10 @@ export function createTranslateLoader(http: HttpClient) {
     LinguaService,
     UtenteService,
     VeicoloService,
+    PatenteService,
     httpInterceptorProviders,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    Camera,
+    FileTransfer
   ]
 })
 export class AppModule {}

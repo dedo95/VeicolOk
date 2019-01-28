@@ -1,11 +1,11 @@
 {
-    "Contattaci": "Contact",
-    "Send_Button" : "Send",
+    "CONTATTACI": "Contact",
+    "SEND_BUTTON" : "Send",
     "Veicoli": "Vehicles",
     "Famigliare": "Family Member",
     "Famiglia": "Family",
     "PSD_NO": "Forgot Your Password?",
-    "Registrati": "Sign Up",
+    "REGISTRATI": "Sign Up",
     "Obj": "Object",
     "Msg": "Message",
     "Info" : "Info",
@@ -21,7 +21,7 @@
     "ITALIANO": "Italian",
     "INGLESE": "English",
     "ESCI": "Log Out",
-    "Chi Siamo": "Information",
+    "CHI_SIAMO": "Information",
     "Registrazione": "Registration",
     "Nome": "Name",
     "Cognome":"Surname",
@@ -31,6 +31,18 @@
     "LOGIN_ERROR_TITLE": "Login error",
     "LOGIN_ERROR_SUB_TITLE": "Username and/or password Wrong!",
     "Registrazione_Title": "Registrazione Completata",
-    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login"
+    "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login",
+    "DATA": "Birth Date :",
+    "DESCRIZIONE": "Description",
+    "TARGA": "Number Plate",
+    "ANNO": "Registration Year",
+    "COLORE": "Color",
+    "NERO": "BLACK",
+    "ROSSO": "RED",
+    "GIALLO": "YELLOW",
+    "VERDE": "GREEN",
+    "GRIGIO": "GREY",
+    "CAVALLI": "Horses",
+    "CILINDRATA": "DISPLACEMENT"
 
 }

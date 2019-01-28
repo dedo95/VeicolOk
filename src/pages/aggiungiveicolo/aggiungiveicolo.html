@@ -27,8 +27,8 @@
   </div>
 
   <ion-item>
-    <ion-input placeholder="Anno Immatricolazione" name="anno_immatricolazione" required [(ngModel)]="veicolo.anno_immatricolazione"
-      #anno_immatricolazione="ngModel"></ion-input>
+  <ion-label>Anno Immatricolazione</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="veicolo.anno_immatricolazione" name="anno_immatricolazione" required #anno_immatricolazione="ngModel"></ion-datetime>
   </ion-item>
 
   <ion-item>
@@ -48,19 +48,20 @@
   </ion-item>
 
   <ion-item>
-    <ion-input placeholder="Immagine" name="img" required [(ngModel)]="veicolo.img" #img="ngModel"></ion-input>
-  </ion-item>
-
-  <ion-item>
     <ion-input placeholder="Kilowatt" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input placeholder="Tipologia" name="tipologia" required [(ngModel)]="veicolo.tipologia" #tipologia="ngModel"></ion-input>
+   <ion-label>Tipologia</ion-label>
+      <ion-select [(ngModel)]="veicolo.tipologia" #tipologia="ngModel" required name="tipologia">
+        <ion-option value="auto">Auto</ion-option>
+        <ion-option value="moto">Moto</ion-option>
+        <ion-option value="trattore">Trattore</ion-option>
+        <ion-option value="camion">Camion</ion-option>
+      </ion-select>
   </ion-item>
 
-  <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Registrati </button>
+  <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Crea Veicolo </button>
 
 </form>
-
 </ion-content>

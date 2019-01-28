@@ -5,6 +5,7 @@ import { InfoVeicoloPage } from '../info-veicolo/info-veicolo';
 import { UtenteService } from '../../services/utente.service';
 import { VeicoloService } from '../../services/veicolo.service';
 import {Storage} from "@ionic/storage";
+import {Veicolo} from "../../model/veicolo.model";
 
 @Component({
   selector: 'page-home',
@@ -12,13 +13,16 @@ import {Storage} from "@ionic/storage";
 })
 export class HomePage {
 
-  private veicoli: Array<any>;
+  private veicoli: Array<Veicolo>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public utenteService: UtenteService, public veicoloService: VeicoloService, public storage:Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VeicoloPage');
+    this.utenteService.getUtente().subscribe((val)=>{
+      console.log(val);
+    });
       this.utenteService.getVeicoli().subscribe(veicolo=>{
         this.veicoli=veicolo;
       });
@@ -37,17 +41,19 @@ export class HomePage {
     });
   }
 
-  openDetail(utente) {
-    this.navCtrl.push(InfoVeicoloPage, utente);
+  openDetail(veicolo) {
+    this.navCtrl.push(InfoVeicoloPage, veicolo);
     //console.log(utente);
   }
 
-  delete(utente) {
+  delete(veicolo) {
     for (let i = 0; i < this.veicoli.length; i++) {
-      if (this.veicoli[i] == utente) {
+      if (this.veicoli[i] == veicolo) {
+        console.log("pippo");
         this.veicoli.splice(i, 1);
       }
     }
+    this.veicoloService.delete(veicolo);
   }
   
   go_aggiungi_veicolo(){

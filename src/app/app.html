@@ -2,12 +2,12 @@
 
     <ion-header>
         <ion-toolbar>
-            <ion-item class="user-menu">
-                <ion-avatar item-start>
-                    <img src="../assets/imgs/logo.jpg">
+            <ion-item class="user-menu" *ngIf="isLogged" (click)="goToProfilo()">
+                <ion-avatar item-center>
+                    <img src="../assets/imgs/logo.png">
                 </ion-avatar>
-            <ion-title>Nome e Cognome</ion-title>
-            </ion-item>
+
+            </ion-item >
         </ion-toolbar>
     </ion-header>
 
@@ -35,10 +35,10 @@
                         {{'INGLESE' | translate}}
                     </ion-segment-button>
                 </ion-segment>
-            <ion-item-divider></ion-item-divider>
-            <ion-item style="background-color:#fffbaa"></ion-item>
+            <ion-item-divider *ngIf="isLogged" ></ion-item-divider>
+            <ion-item style="background-color:#fffbaa" *ngIf="isLogged"></ion-item>
             <ion-item>
-            <button ion-button outline default block id="logout" (click)="logout()">
+            <button ion-button outline default block id="logout" (click)="logout()" *ngIf="isLogged">
                 {{'ESCI' | translate}}
                 <ion-icon name="md-exit"></ion-icon>
             </button>

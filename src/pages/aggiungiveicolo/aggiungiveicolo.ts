@@ -4,7 +4,10 @@ import { NgForm } from '@angular/forms';
 import { VeicoloService } from '../../services/veicolo.service';
 import { Storage } from '@ionic/storage';
 import { UtenteService } from '../../services/utente.service';
-import {HomePage} from "../Home/home";
+import {TabsPage} from "../tabs/tabs";
+import {Veicolo} from "../../model/veicolo.model";
+import {Camera} from "@ionic-native/camera";
+import {FileTransfer} from "@ionic-native/file-transfer";
 /**
  * Generated class for the AggiungiveicoloPage page.
  *
@@ -19,21 +22,14 @@ import {HomePage} from "../Home/home";
 })
 export class AggiungiveicoloPage {
 
-  veicolo = {
-    targa: '',
-    alimentazione: '',
-    anno_immatricolazione: '',
-    cavalli: '',
-    cilindrata: '',
-    colore: '',
-    descrizione: '',
-    img: '',
-    kw: '',
-    tipologia: '',
-    utente: {}
-  };
+  veicolo :Veicolo=new Veicolo();
+  image:string="";
 
-  constructor(public navCtrl: NavController, public veicoloService: VeicoloService, public storage: Storage, public utenteService: UtenteService) {
+  constructor(public navCtrl: NavController,
+              public veicoloService: VeicoloService,
+              public storage: Storage,
+              public camera:Camera,
+              public fileTransfer: FileTransfer) {
 
   }
 
@@ -45,11 +41,10 @@ export class AggiungiveicoloPage {
     this.veicolo.cilindrata = veicoloForm.value.cilindrata;
     this.veicolo.colore = veicoloForm.value.colore;
     this.veicolo.descrizione = veicoloForm.value.descrizione;
-    this.veicolo.img = veicoloForm.value.img;
+    this.veicolo.img = "";
     this.veicolo.kw = veicoloForm.value.kw;
     this.veicolo.tipologia = veicoloForm.value.tipologia;
     this.veicoloService.create(this.veicolo);
-    this.navCtrl.pop();
+    this.navCtrl.push(TabsPage);
   }
-
 }
