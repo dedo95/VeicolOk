@@ -49,6 +49,15 @@ export class UtenteService {
       });
   }
 
+  updateImage(image){
+    return this.http.post(URL.URL_IMG,image,{ observe: 'response' }).toPromise()
+      .then((response: HttpResponse<Utente>)=>{
+        console.log(response.body);
+          this.storage.set(UTENTE_STORAGE, response.body);
+          return response;
+      }).catch(error=> {console.log(error)});
+  }
+
     stamp() {
         this.storage.get(UTENTE_STORAGE).then((val) => {
             console.log(val);

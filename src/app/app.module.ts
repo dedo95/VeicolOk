@@ -10,8 +10,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule } from '@angular/forms';
+import { File } from '@ionic-native/file/ngx';
+import { Transfer } from '@ionic-native/transfer/';
+import { FilePath } from '@ionic-native/file-path/ngx';
 import { Camera } from '@ionic-native/camera';
-import { FileTransfer } from '@ionic-native/file-transfer';
 
 
 import { UtenteService } from '../services/utente.service';
@@ -108,7 +110,9 @@ export function createTranslateLoader(http: HttpClient) {
     PatenteService,
     httpInterceptorProviders,
     Camera,
-    FileTransfer
+    FilePath,
+    Transfer,
+    File
   ]
 })
 export class AppModule {}

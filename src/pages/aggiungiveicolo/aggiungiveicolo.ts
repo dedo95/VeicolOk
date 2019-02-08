@@ -6,8 +6,7 @@ import { Storage } from '@ionic/storage';
 import { UtenteService } from '../../services/utente.service';
 import {TabsPage} from "../tabs/tabs";
 import {Veicolo} from "../../model/veicolo.model";
-import {Camera} from "@ionic-native/camera";
-import {FileTransfer} from "@ionic-native/file-transfer";
+
 /**
  * Generated class for the AggiungiveicoloPage page.
  *
@@ -27,9 +26,7 @@ export class AggiungiveicoloPage {
 
   constructor(public navCtrl: NavController,
               public veicoloService: VeicoloService,
-              public storage: Storage,
-              public camera:Camera,
-              public fileTransfer: FileTransfer) {
+              public storage: Storage) {
 
   }
 

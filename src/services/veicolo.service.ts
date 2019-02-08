@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { URL } from '../constants';
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import {URL, UTENTE_STORAGE} from '../constants';
 import { Storage } from '@ionic/storage';
 import {UtenteService} from "./utente.service";
 import {Veicolo} from "../model/veicolo.model";
+import {Utente} from "../model/utente.model";
+import {toPromise} from "rxjs/operator/toPromise";
 
 
 @Injectable()
@@ -16,8 +18,10 @@ export class VeicoloService {
         console.log("INIZIO");
         console.log(veicolo.utente);
         this.utenteService.getUtente().subscribe((utente)=>{
-          console.log(utente);
+          console.log("Utente :"+ utente.img);
+          utente.img=null;
           veicolo.utente=utente;
+          console.log("Veicolo : "+veicolo.utente.img);
           return this.http.post(URL.URL_VEICOLO, veicolo).toPromise()
             .then((response: Response) => {
               return response.json();
@@ -35,4 +39,15 @@ export class VeicoloService {
           }).catch(error => { console.error() }
           );
     }
+
+  updateImage(veicolo){
+      console.log("SAAAAAAAAAAAAAA : "+veicolo.targa);
+      console.log("SAAAAAAAAAAaaaa : "+veicolo.img);
+      let body={"img": veicolo.img, "targa" : veicolo.targa};
+    return this.http.post(URL.URL_IM,body).toPromise()
+      .then((response: HttpResponse<Veicolo>)=>{
+        console.log(response.body);
+        return response.body;
+      }).catch(error=> {console.log(error)});
+  }
 }

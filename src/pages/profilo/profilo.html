@@ -5,40 +5,45 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title> {{'Utente' | translate}} </ion-title>
+      <ion-buttons end>
+        <button ion-button >
+          Salva
+        </button>
+      </ion-buttons>
     </ion-navbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
   <ion-item no-lines>
     <ion-avatar (click)="modifica()">
-      <img src="../../assets/imgs/logo.png" [(ngModel)]="image" ngDefaultControl style="width: 150px;height: 150px;">
+      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)"  [(ngModel)]="image" ngDefaultControl style="width: 150px;height: 150px;">
     </ion-avatar>
-
-
   </ion-item>
 
   <ion-list no-lines>
     <ion-item>
-      <ion-label color="black">{{'Cognome'|translate}} : <b>{{utente.cognome.toUpperCase()}} </b> </ion-label>
+      <ion-label style="color:black">{{'Cognome'|translate}}: </ion-label>
+      <ion-input color="black" value="{{utente.cognome.toUpperCase()}}" style="font-weight:bold;" ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'Nome'|translate}} :<b>{{utente.nome.toUpperCase()}} </b> </ion-label>
+      <ion-label style="color:black">{{'Nome'|translate}} : </ion-label>
+      <ion-input color="black" value="{{utente.nome.toUpperCase()}}" style="font-weight:bold;"> </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'DATA'|translate}}  <b>{{utente.d_nascita.toUpperCase()}} </b> </ion-label>
+      <ion-label style="color:black">{{'DATA'|translate}} </ion-label>
+      <ion-input color="black" value="{{utente.d_nascita.toUpperCase()}}" style="font-weight:bold;"> </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">Email : <b>{{utente.email}} </b> </ion-label>
-    </ion-item>
-
-    <ion-item>
-      <ion-label color="black">Email : <b>{{utente.img}} </b> </ion-label>
+      <ion-label style="color:black">Email: </ion-label>
+      <ion-input color="black" value="{{utente.email}}" style="font-weight:bold;"> </ion-input>
     </ion-item>
   </ion-list>
 
