@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, Refresher} from 'ionic-angular';
 import { AggiungiMembroPage } from '../aggiungi-membro/aggiungi-membro';
+import {Famiglia} from "../../model/famiglia.model";
+import {FamigliaService} from "../../services/famiglia.service";
+import {Utente} from "../../model/utente.model";
+import {UtenteService} from "../../services/utente.service";
+import {FamigliarePage} from "../famigliare/famigliare";
+import {ProfiloPage} from "../profilo/profilo";
 
 @IonicPage()
 @Component({
@@ -9,63 +15,72 @@ import { AggiungiMembroPage } from '../aggiungi-membro/aggiungi-membro';
 })
 export class FamigliaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertController:AlertController) {
+  private famiglia:Famiglia=new Famiglia();
+  private exist:boolean;
+  private users:Array<Utente>;
+  private utente:Utente=new Utente();
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public alertController:AlertController,
+              public famigliaService:FamigliaService,
+              private utenteService:UtenteService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FamigliaPage');
+    this.utenteService.getUtente().subscribe((utente)=>{
+      console.log(utente);
+      this.utente=utente;
+    });
+    this.famigliaService.getFamiglia().subscribe(famiglia=>{
+      this.famiglia=famiglia;
+      console.log(famiglia);
+      if(this.famiglia==null){
+        this.exist=true;
+      }else{
+        this.exist=false;
+        this.famigliaService.getFamigliari().subscribe(famigliare=>{
+          this.users=famigliare;
+        });
+      }
+    });
   }
-
 
   goAggiungi_Membro(){
     this.navCtrl.push(AggiungiMembroPage);
   }
 
+  delete(famigliare) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i] == famigliare) {
+        console.log("pippo");
+        this.users.splice(i, 1);
+      }
+    }
+    famigliare.img=null;
+    this.famigliaService.delete(famigliare);
+  }
+
+  openDetail(famigliare:Utente){
+    this.navCtrl.push(FamigliarePage,famigliare);
+  }
+
+  openProfilo(){
+    this.navCtrl.push(ProfiloPage);
+  }
+
   async presentAlertPrompt() {
     const alert = await this.alertController.create({
-      title:'Crea Famiglia',
+      title:'crea famiglia',
       inputs: [
         {
-          name: 'name1',
+          name: 'nomeFamiglia',
           type: 'text',
-          placeholder: 'Placeholder 1'
-        },
-        {
-          name: 'name2',
-          type: 'text',
-          id: 'name2-id',
-          value: 'hello',
-          placeholder: 'Placeholder 2'
-        },
-        {
-          name: 'name3',
-          value: 'http://ionicframework.com',
-          type: 'url',
-          placeholder: 'Favorite site ever'
-        },
-        // input date with min & max
-        {
-          name: 'name4',
-          type: 'date',
-          min: '2017-03-01',
-          max: '2018-01-12'
-        },
-        // input date without min nor max
-        {
-          name: 'name5',
-          type: 'date'
-        },
-        {
-          name: 'name6',
-          type: 'number',
-          min: -5,
-          max: 10
-        },
-        {
-          name: 'name7',
-          type: 'number'
+          placeholder: 'Nome Famiglia'
         }
       ],
+
       buttons: [
         {
           text: 'Cancel',
@@ -75,15 +90,33 @@ export class FamigliaPage {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Ok',
-          handler: () => {
+          text: 'Salva',
+          handler: data => {
             console.log('Confirm Ok');
+            this.famigliaService.creaFamiglia(data.nomeFamiglia);
+            this.famigliaService.getFamiglia().subscribe(famiglia=>{
+              this.famiglia=famiglia;
+              console.log(famiglia);
+              if(this.famiglia==null){
+                this.exist=true;
+              }else{
+                this.exist=false;
+                this.famigliaService.getFamigliari().subscribe(famigliare=>{
+                  this.users=famigliare;
+                });
+              }
+            });
           }
         }
       ]
     });
-
     await alert.present();
   }
 
+  doRefresh(refresher: Refresher){
+    this.famigliaService.getFamigliari().subscribe(famigliare =>{
+      this.users=famigliare;
+    });
+    refresher.complete();
+  }
 }

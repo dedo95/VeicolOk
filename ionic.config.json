@@ -4,9 +4,10 @@
     "cordova": {}
   },
   "type": "ionic-angular",
+
   "proxies": [
     {
-      "path": "/api",
+      "path": "*/api",
       "proxyUrl": "http://localhost:8080/vok/api"
     }
   ]

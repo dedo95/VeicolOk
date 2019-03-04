@@ -43,6 +43,15 @@
     "VERDE": "GREEN",
     "GRIGIO": "GREY",
     "CAVALLI": "Horses",
-    "CILINDRATA": "DISPLACEMENT"
+    "CILINDRATA": "DISPLACEMENT",
+    "TIPOLOGIA": "TYPOLOGY",
+    "DELETE_BUTTON": "Delete",
+    "SAVE_BUTTON": "Save",
+    "CANCEL_BUTTON": "Cancel",
+    "DELETE_VEICOLO_TITLE":"Delete Veicle",
+    "DELETE_VEICOLO_MESSAGE": "Do you want to delete the vehicle?",
+    "CREATE_BUTTON":"CREATE",
+    "IMPORTO":"Amount",
+    "SCADENZA":"Expiration Date"
 
 }

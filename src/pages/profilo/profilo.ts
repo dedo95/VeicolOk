@@ -14,14 +14,8 @@ import {Transfer} from "@ionic-native/transfer";
 import { File } from '@ionic-native/file/ngx';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from "@angular/common/http";
+import {NgForm} from "@angular/forms";
 
-
-/**
- * Generated class for the ProfiloPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 declare var cordova: any;
 @IonicPage()
 @Component({
@@ -53,11 +47,22 @@ export class ProfiloPage {
       this.utente = user;
       if (this.utente.img.length ===0) {
         console.log("VEROOOOO");
-        this.utente.img = "../../assets/imgs/default.png";
+        this.utente.img = "../../assets/imgs/user.png";
         console.log(this._DomSanitizationService.bypassSecurityTrustUrl(this.utente.img));
       }
       console.log(this.utente);
     })
+  }
+
+  onSubmit(profileForm: NgForm){
+    if (profileForm.valid){
+      this.image=this.utente.img;
+      this.utente.img='';
+      this.utenteService.updateProfilo(this.utente).subscribe((nuovoUtente: Utente) => {
+        this.utente = nuovoUtente;
+        this.utente.img=this.image;
+      });
+    }
   }
 
   modifica() {
@@ -89,17 +94,16 @@ export class ProfiloPage {
   public takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
-      quality: 50,
-      targetWidth: 400,
-      targetHeight: 400,
+      quality: 10,
+      targetWidth: 50,
+      targetHeight: 50,
       sourceType: sourceType,
       saveToPhotoAlbum: true,
       correctOrientation: true,
       destinationType: this.camera.DestinationType.DATA_URL,
       // In this app, dynamically set the picture source, Camera or photo gallery
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true
+      mediaType: this.camera.MediaType.PICTURE
     };
     // Get the data of an image
     this.camera.getPicture(options).then((imageURI) => {

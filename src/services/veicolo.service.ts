@@ -6,6 +6,7 @@ import {UtenteService} from "./utente.service";
 import {Veicolo} from "../model/veicolo.model";
 import {Utente} from "../model/utente.model";
 import {toPromise} from "rxjs/operator/toPromise";
+import {Observable} from "rxjs";
 
 
 @Injectable()
@@ -27,12 +28,12 @@ export class VeicoloService {
               return response.json();
             }).catch(error => { console.error() }
             );
-        })
+        });
 
     }
 
     delete(veicolo: Veicolo){
-      console.log("INIZIO");
+      console.log("INIZIO" + veicolo);
         return this.http.post(URL.URL_DELETE, veicolo).toPromise()
           .then((response: Response) => {
             return response.json();
@@ -44,10 +45,17 @@ export class VeicoloService {
       console.log("SAAAAAAAAAAAAAA : "+veicolo.targa);
       console.log("SAAAAAAAAAAaaaa : "+veicolo.img);
       let body={"img": veicolo.img, "targa" : veicolo.targa};
-    return this.http.post(URL.URL_IM,body).toPromise()
+      return this.http.post(URL.URL_IM,body).toPromise()
       .then((response: HttpResponse<Veicolo>)=>{
-        console.log(response.body);
+        console.log("BODYYYYYYYYYY : "+response.body);
         return response.body;
       }).catch(error=> {console.log(error)});
+  }
+
+  updateVeicolo(nuovoVeicolo: Veicolo): Observable<Veicolo> {
+    return this.http.post<Veicolo>(URL.URL_UPDATE_VEICOLO, nuovoVeicolo, { observe: 'response' })
+      .map((resp: HttpResponse<Veicolo>) => {
+        return resp.body;
+      });
   }
 }

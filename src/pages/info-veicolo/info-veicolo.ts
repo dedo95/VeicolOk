@@ -8,13 +8,12 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from "@angular/common/http";
 import {UtenteService} from "../../services/utente.service";
 import {VeicoloService} from "../../services/veicolo.service";
-
-/**
- * Generated class for the InfoVeicoloPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {NgForm} from "@angular/forms";
+import {Utente} from "../../model/utente.model";
+import {Veicolo} from "../../model/veicolo.model";
+import {ContattaciPage} from "../contattaci/contattaci";
+import {ChiSiamoPage} from "../chi-siamo/chi-siamo";
+import {ScadenzaPage} from "../scadenza/scadenza";
 
 declare var cordova: any;
 
@@ -25,20 +24,13 @@ declare var cordova: any;
 })
 export class InfoVeicoloPage {
 
-  veicolo = {
-    targa: '',
-    alimentazione: '',
-    anno_immatricolazione: '',
-    cavalli: '',
-    cilindrata: '',
-    colore: '',
-    descrizione: '',
-    img:'',
-    kw: '',
-    tipologia: '',
-    utente: {}
-  };
+  veicolo :Veicolo=new Veicolo();
   image: String="";
+  tipologia:string='';
+  scadenze: Array<{title: string, component: any}>;
+  utente:Utente=new Utente();
+  targa:string='';
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public actionSheetCtrl: ActionSheetController,
@@ -50,17 +42,39 @@ export class InfoVeicoloPage {
               public http: HttpClient,
               private _DomSanitizationService: DomSanitizer,
               private veicoloService:VeicoloService) {
+    this.scadenze = [
+      {title: 'Assicurazione', component: ScadenzaPage},
+      {title: 'Bollo', component: ScadenzaPage},
+      {title: 'Revisione', component: ScadenzaPage},
+    ];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InfoVeicoloPage');
     this.veicolo=this.navParams.data;
+    this.targa=this.veicolo.targa;
+    this.tipologia=this.veicolo.tipologia;
+    this.utente=this.veicolo.utente;
     console.log(this.veicolo);
     if (this.veicolo.img.length ===0) {
       console.log("VEROOOOO");
       this.veicolo.img = "../../assets/imgs/default.png";
-      console.log(this._DomSanitizationService.bypassSecurityTrustUrl(this.veicolo.img));
+      //console.log(this._DomSanitizationService.bypassSecurityTrustUrl(this.veicolo.img));
     }
+  }
+
+
+
+  onSubmit(veicoloForm: NgForm){
+   // if (veicoloForm.valid){
+      this.veicolo.img='';
+      this.veicoloService.updateVeicolo(this.veicolo).subscribe((nuovoVeicolo: Veicolo) => {
+        this.veicolo = nuovoVeicolo;
+        if (this.veicolo.img.length===0){
+          this.veicolo.img="../../assets/imgs/default.png";
+        }
+      });
+    //}
   }
 
   modifica() {
@@ -119,9 +133,11 @@ export class InfoVeicoloPage {
   }
 
   doRefresh(refresher: Refresher){
-
       refresher.complete();
+  }
 
+  openPage(scadenza) {
+    this.navCtrl.push(scadenza.component,{scadenza:scadenza.title,targa:this.targa});
   }
 
 }

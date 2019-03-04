@@ -16,11 +16,47 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="text-align: center;">
 
-  <button ion-button icon-only (click)="presentAlertPrompt()">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <button ion-button icon-only *ngIf="exist" (click)="presentAlertPrompt()">
     {{'Crea Famiglia' | translate}}
     <ion-icon name="ios-person-add-outline"></ion-icon>
   </button>
+  <ion-list *ngIf="!exist" no-lines>
+    <ion-item no-lines >
+      <ion-title color="black" align="center" >{{'Famiglia '|translate}}  <b>{{famiglia.nome.toUpperCase()}} </b>  </ion-title>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar (click)="modifica()" >
+        <img src="../../assets/imgs/family.png" style="width: 150px;height: 150px;margin:auto;" >
+      </ion-avatar>
+    </ion-item>
+
+    <ion-item (click)="openProfilo()">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/default.png" >
+      </ion-avatar>
+      <b>{{utente.nome+' '+utente.cognome}}</b>(Io)
+    </ion-item>
+
+    <ion-item-sliding *ngFor="let famigliare of users" >
+      <ion-item (click)="openDetail(famigliare)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/default.png" >
+        </ion-avatar>
+        <b>{{famigliare.nome+' '+famigliare.cognome}}</b>
+      </ion-item>
+      <ion-item-options side="right" (click)="delete(famigliare)">
+        <button ion-button color="primary" >
+          <ion-icon name="trash"></ion-icon> Elimina
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

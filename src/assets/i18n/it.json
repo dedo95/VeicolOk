@@ -43,6 +43,16 @@
     "VERDE": "VERDE",
     "GRIGIO": "GRIGIO",
     "CAVALLI": "CAVALLI",
-    "CILINDRATA": "CILINDRATA"
+    "CILINDRATA": "CILINDRATA",
+    "TIPOLOGIA": "TIPOLOGIA",
+    "DELETE_BUTTON": "Elimina",
+    "CANCEL_BUTTON": "Annulla",
+    "SAVE_BUTTON": "Salva",
+    "DELETE_VEICOLO_TITLE": "Elimina Veicolo",
+    "DELETE_VEICOLO_MESSAGE": "Vuoi eliminare il Veicolo?",
+    "CREATE_BUTTON":"Crea",
+    "IMPORTO":"Importo",
+    "SCADENZA":"Data Scadenza"
+
 
 }

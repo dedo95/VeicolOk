@@ -19,8 +19,7 @@
   </div>
 
   <ion-item>
-    <ion-input placeholder="Alimentazione" name="alimentazione" required [(ngModel)]="veicolo.alimentazione"
-      #alimentazione="ngModel"></ion-input>
+    <ion-input placeholder="Alimentazione" name="alimentazione" required [(ngModel)]="veicolo.alimentazione" #alimentazione="ngModel"></ion-input>
   </ion-item>
   <div ion-text [hidden]="alimentazione.valid || alimentazione.pristine" color="danger" padding-left>
     nome richiesto
@@ -54,10 +53,10 @@
   <ion-item>
    <ion-label>Tipologia</ion-label>
       <ion-select [(ngModel)]="veicolo.tipologia" #tipologia="ngModel" required name="tipologia">
-        <ion-option value="auto">Auto</ion-option>
-        <ion-option value="moto">Moto</ion-option>
-        <ion-option value="trattore">Trattore</ion-option>
-        <ion-option value="camion">Camion</ion-option>
+        <ion-option value="Auto">Auto</ion-option>
+        <ion-option value="Moto">Moto</ion-option>
+        <ion-option value="Trattore">Trattore</ion-option>
+        <ion-option value="Camion">Camion</ion-option>
       </ion-select>
   </ion-item>
 

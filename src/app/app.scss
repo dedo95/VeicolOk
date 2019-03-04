@@ -149,9 +149,28 @@
         background: transparent;
     }
 
-    .title_noicon{
+.item-text-center
+{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  padding-left: 80px;
+}
+
+   /* .title_noicon{
         padding-right: 60px;
-    }
+    }*/
 
     .bar-button-default-ios,
 .bar-button-default.bar-button-ios-default,
@@ -230,6 +249,14 @@ a.item-ios:not([detail-none]) .item-inner {
   border-bottom-color: color($colors, primary);
   -webkit-box-shadow: inset 0 -1px 0 0 color($colors, primary);
   box-shadow: inset 0 -1px 0 0 color($colors, primary);
+}
+.button-ios {
+  color: black;
+  padding-left: 12px;
+}
+
+.button-md{
+  color: black;
 }
 
 

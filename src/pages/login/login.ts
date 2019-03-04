@@ -61,10 +61,6 @@ export class LoginPage {
     this.navCtrl.push(RecuperaPswPage);
   }
 
-  stampa(){
-    this.utenteService.stamp();
-  }
-
   showLoginError() {
     let alert = this.alertCtrl.create({
       title: this.loginTitle,

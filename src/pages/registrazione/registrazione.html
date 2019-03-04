@@ -22,7 +22,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Data Nascita" name="nascita" required [(ngModel)]="user.d_nascita" #d_nascita="ngModel"></ion-input>
+      <ion-label>Data Nascita</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="user.d_nascita" name="nascita" required #d_nascita="ngModel"></ion-datetime>
     </ion-item>
 
     <ion-item>

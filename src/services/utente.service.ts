@@ -12,6 +12,7 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 @Injectable()
 export class UtenteService {
 
+  private apiUrl:string='';
   private tokenUtente: string;
 
     constructor(public http: HttpClient, public storage: Storage) {
@@ -77,6 +78,21 @@ export class UtenteService {
   getUtenteToken(): string {
     return this.tokenUtente;
   }
+
+  updateProfilo(nuovoUtente: Utente): Observable<Utente> {
+    return this.http.post<Utente>(URL.URL_UPDATE_PROFILO, nuovoUtente, { observe: 'response' })
+      .map((resp: HttpResponse<Utente>) => {
+        //Aggiornamento dell'utente nello storage.
+        //Utente memorizzato nello storage per evitare chiamata REST quando si vuole modificare il profilo
+        //e se l'utente chiude la app e la riapre i dati sono gia' presenti
+        if(resp.body.img.length===0) {
+          resp.body.img = "../../assets/imgs/default.png";
+        }
+        this.storage.set(UTENTE_STORAGE, resp.body);
+        return resp.body;
+      });
+  }
+
 }
 export interface Account {
     username: string;

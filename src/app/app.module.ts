@@ -9,7 +9,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
 import { Transfer } from '@ionic-native/transfer/';
 import { FilePath } from '@ionic-native/file-path/ngx';
@@ -37,6 +37,10 @@ import { AggiungiMembroPage} from '../pages/aggiungi-membro/aggiungi-membro';
 import {TokenInterceptor} from "../interceptors/token.interceptor";
 import {InfoVeicoloPage} from "../pages/info-veicolo/info-veicolo";
 import {PatenteService} from "../services/patente.service";
+import {FamigliaService} from "../services/famiglia.service";
+import {ScadenzaPage} from "../pages/scadenza/scadenza";
+import {ScadenzaService} from "../services/scadenza.service";
+import {FamigliarePage} from "../pages/famigliare/famigliare";
 
 
 
@@ -62,13 +66,16 @@ export function createTranslateLoader(http: HttpClient) {
     AggiungiveicoloPage,
     FamigliaPage,
     AggiungiMembroPage,
-    InfoVeicoloPage
+    InfoVeicoloPage,
+    ScadenzaPage,
+    FamigliarePage
     
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -98,7 +105,9 @@ export function createTranslateLoader(http: HttpClient) {
     AggiungiveicoloPage,
     FamigliaPage,
     AggiungiMembroPage,
-    InfoVeicoloPage
+    InfoVeicoloPage,
+    ScadenzaPage,
+    FamigliarePage
   ],
   providers: [
     StatusBar,
@@ -108,6 +117,8 @@ export function createTranslateLoader(http: HttpClient) {
     UtenteService,
     VeicoloService,
     PatenteService,
+    FamigliaService,
+    ScadenzaService,
     httpInterceptorProviders,
     Camera,
     FilePath,

@@ -1,8 +1,10 @@
+import {Utente} from "./utente.model";
+
 export class Patente {
-    num_patente: String;
-    intestatario: String;
-    punti: BigInteger;
-    categoria: String;
-    data_scadenza: Date;
-   
+    id_patente:string='';
+    num_patente: string='';
+    punti: string='';
+    categoria: string='';
+    scadenza: string='';
+   utente:Utente=new Utente();
 }

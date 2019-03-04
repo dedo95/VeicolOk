@@ -20,42 +20,89 @@
 <ion-list>
   <ion-item no-lines>
     <ion-avatar style="align-content: center">
-      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(veicolo.img)" [(ngModel)]="image"  (click)="modifica()" ngDefaultControl style="width: 150px;height: 150px;">
+      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(veicolo.img)" [(ngModel)]="image"  (click)="modifica()" ngDefaultControl style="width: 150px;height: 150px;margin: auto;">
     </ion-avatar>
   </ion-item>
+  <ion-item style="background-color:#fffbaa" >
+    Informazioni
 
-  <ion-item style="background-color:#fffbaa" > </ion-item>
+      <label ion-button (click)="onSubmit(profileForm)" item-end>
+        Salva
+      </label>
+  </ion-item>
 </ion-list>
+
+  <ion-card>
+  <form #veicoloForm="ngForm" >
   <ion-list no-lines>
     <ion-item>
-      <ion-label color="black">{{'DESCRIZIONE'|translate}} : <b>{{veicolo.descrizione.toUpperCase()}} </b> </ion-label>
+      <ion-label color="black">{{'DESCRIZIONE'|translate}} : </ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="descrizione" required [(ngModel)]="veicolo.descrizione" #descrizione="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'TARGA'|translate}} : <b>{{veicolo.targa.toUpperCase()}} </b> </ion-label>
+      <ion-label color="black">{{'TARGA'|translate}} : </ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'ANNO'|translate}} : <b>{{veicolo.anno_immatricolazione.toUpperCase()}} </b> </ion-label>
+      <ion-label>Tipologia : </ion-label>
+      <ion-select [(ngModel)]="veicolo.tipologia" #tipologia="ngModel" required name="tipologia" value="tipologia==veicolo.tipologia">
+        <ion-option value="Auto" >Auto</ion-option>
+        <ion-option value="Moto">Moto</ion-option>
+        <ion-option value="Trattore">Trattore</ion-option>
+        <ion-option value="Camion">Camion</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'COLORE'|translate}} : <b>{{veicolo.colore.toUpperCase()|translate}} </b> </ion-label>
+      <ion-label>
+        Intestatario:
+      </ion-label>
+      <ion-label>
+         <b>{{utente.nome+' '+ utente.cognome}}</b>
+      </ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'CAVALLI'|translate}} : <b>{{veicolo.cavalli}} </b> </ion-label>
+      <ion-label color="black">{{'ANNO'|translate}}: </ion-label>
+      <ion-input color="black" style="font-weight:bold;" name="anno_immatricolazione" required [(ngModel)]="veicolo.anno_immatricolazione" #anno_immatricolazione="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">{{'CILINDRATA'|translate}} : <b>{{veicolo.cilindrata}} cc </b> </ion-label>
+      <ion-label color="black">{{'COLORE'|translate}} :</ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="colore" required [(ngModel)]="veicolo.colore" #colore="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="black">Kilowatt : <b>{{veicolo.kw}} </b> </ion-label>
+      <ion-label color="black">{{'CAVALLI'|translate}} :</ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">{{'CILINDRATA'|translate}} :  </ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="black">Kilowatt : </ion-label>
+      <ion-input color="black"  style="font-weight:bold;" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel"></ion-input>
     </ion-item>
 
   </ion-list>
+  </form>
+    </ion-card>
 
-  <ion-item style="background-color:#fffbaa" > </ion-item>
+  <ion-item style="background-color:#fffbaa" >
+    Scadenze
+  </ion-item>
+
+  <ion-card>
+    <ion-list>
+      <button ion-item *ngFor="let s of scadenze" (click)="openPage(s)" >
+        {{s.title}}
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+      </button>
+    </ion-list>
+  </ion-card>
 </ion-content>

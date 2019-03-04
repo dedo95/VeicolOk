@@ -13,10 +13,12 @@
 </ion-header>
 
 
-<ion-content padding>
-<ion-item>
-  <ion-icon name="md-person" item-start></ion-icon>
-  <ion-input placeholder="Nome e Cognome"></ion-input>
-</ion-item>
-<button ion-button full class="login_button"> {{'Agg' | translate}} </button>
+<ion-content padding >
+  <form #aggiungiMembro="ngForm" novalidate (ngSubmit)="aggiungiMembroFamiglia(aggiungiMembro)">
+    <ion-item>
+      <ion-icon name="md-person" item-start></ion-icon>
+      <ion-input placeholder="Email" name="email" required [(ngModel)]="email" #member_email="ngModel" type="email"></ion-input>
+    </ion-item>
+    <button ion-button full class="login_button" type="submit"> {{'Agg' | translate}} </button>
+  </form>
 </ion-content>
