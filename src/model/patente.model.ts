@@ -6,5 +6,5 @@ export class Patente {
     punti: string='';
     categoria: string='';
     scadenza: string='';
-   utente:Utente=new Utente();
+    utente:Utente=new Utente();
 }

@@ -4,6 +4,7 @@ import {PatenteService} from "../../services/patente.service";
 import {Patente} from "../../model/patente.model";
 import {NgForm} from "@angular/forms";
 import {Scadenza} from "../../model/scadenza.model";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'page-patenet',
@@ -14,20 +15,25 @@ export class PatentePage {
   private patente:Patente=new Patente();
   private p:Patente=new Patente();
   private exist:boolean;
+  private type:string;
+  private num:string;
+  private points:string;
+  private cancelButton: string;
+  private saveButton:string;
+  private title:string;
 
   constructor(public navCtrl: NavController,
               public patenteService:PatenteService,
-              public alertController:AlertController) {
+              public alertController:AlertController,
+              public translateService:TranslateService) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatentePage');
     this.patenteService.getPatente().subscribe(patente=>{
-      console.log("Patente :"+JSON.stringify(patente));
       if(patente!==null){
         this.patente=patente.valueOf();
-        console.log(this.patente);
         this.exist=true;
         this.p=patente;
       }else{
@@ -47,14 +53,9 @@ export class PatentePage {
     this.patenteService.updatePatente(this.patente).subscribe((nuovaPatente)=>{
       this.p=nuovaPatente;
     });
-    /*this.patenteService.getPatente().subscribe(nuovaPatente=> {
-      this.patente = nuovaPatente;
-      console.log(this.patente);
-    });*/
   }
 
   elimina(){
-    console.log("SSSSSSSSSSSSss");
     this.patenteService.deletePatente(new Patente());
     this.exist=false;
   }
@@ -74,24 +75,42 @@ export class PatentePage {
   }
 
   async presentAlertPrompt2() {
+    this.translateService.get("CATEGORIA").subscribe((data:string)=>{
+      this.type=data;
+    });
+    this.translateService.get("NUMERO_PATENTE").subscribe((data:string)=>{
+      this.num=data;
+    });
+    this.translateService.get("PUNTI").subscribe((data:string)=>{
+      this.points=data;
+    });
+    this.translateService.get("CANCEL_BUTTON").subscribe((data:string)=>{
+      this.cancelButton=data;
+    });
+    this.translateService.get("SAVE_BUTTON").subscribe((data:string)=>{
+      this.saveButton=data;
+    });
+    this.translateService.get("Crea Patente").subscribe((data:string)=>{
+      this.title=data;
+    });
     const alert = await this.alertController.create({
-      title:'Crea patente',
+      title:this.title,
       inputs: [
         {
           name: 'categoria',
           type: 'text',
-          placeholder: 'Categoria'
+          placeholder: this.type
         },
         {
           name: 'numero',
           type: 'text',
-          placeholder: 'Numero patente'
+          placeholder: this.num
         },
         {
           name: 'punti',
           type: 'number',
           min: 0,
-          placeholder: 'Punti'
+          placeholder: this.points
 
         },
         {
@@ -104,14 +123,14 @@ export class PatentePage {
 
       buttons: [
         {
-          text: 'Cancel',
+          text: this.cancelButton,
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Salva',
+          text: this.saveButton,
           handler: data => {
             console.log('Confirm Ok');
             this.p.categoria=data.categoria;
@@ -122,15 +141,6 @@ export class PatentePage {
             console.log("this.p "+this.p);
             this.patenteService.creaPatente(this.p);
             this.patente=this.p;
-            /*this.patenteService.getPatente().subscribe(nuovaPatente=>{
-              this.patente=nuovaPatente;
-              console.log("this.patente :"+this.patente);
-              if(this.patente==null){
-                this.exist=false;
-              }else{
-                this.exist=true;
-              }
-            });*/
             this.exist=true;
           }
         }

@@ -3,6 +3,7 @@ import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angula
 import {NgForm} from "@angular/forms";
 import {FamigliaService} from "../../services/famiglia.service";
 import {Message_Response} from "../../model/message_response.model";
+import {TranslateService} from "@ngx-translate/core";
 
 @IonicPage()
 @Component({
@@ -13,30 +14,38 @@ export class AggiungiMembroPage {
 
   private mex:Message_Response=new Message_Response();
   private email:string='';
+  private messageTitle:string;
+  private message:string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public famigliaService: FamigliaService,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public translateService:TranslateService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AggiungiMembroPage');
+    this.translateService.get("AGGIUNGI_MEMBRO_TITLE").subscribe((data:string)=>{
+      this.messageTitle=data;
+    });
   }
 
   aggiungiMembroFamiglia(aggiungiMembro: NgForm){
     this.email=aggiungiMembro.value.email;
     this.famigliaService.aggiungi(this.email).subscribe((messaggio=>{
-      console.log("WWWWWWWWW"+JSON.stringify(messaggio));
       this.mex =messaggio;
-      console.log("2222222222"+JSON.stringify(this.mex));
-      this.creazioneOk(this.mex.messaggio);
+      let s="AGGIUNGI_MEMBRO_MESSAGE_"+this.mex.type;
+      this.translateService.get(s).subscribe((data:string)=>{
+        this.message=data;
+      })
+      this.creazioneOk(this.message);
     }));
   }
 
   creazioneOk(messaggio:string){
     let alert = this.alertCtrl.create({
-      title: 'Esito aggiungi membro',
+      title: this.messageTitle,
       subTitle: messaggio,
       buttons: ['OK']
     });

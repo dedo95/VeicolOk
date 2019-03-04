@@ -56,7 +56,6 @@ export class InfoVeicoloPage {
     this.tipologia=this.veicolo.tipologia;
     this.utente=this.veicolo.utente;
     if (this.veicolo.img.length ===0) {
-      console.log("VEROOOOO");
       this.veicolo.img = "../../assets/imgs/default.png";
     }
   }
@@ -99,15 +98,14 @@ export class InfoVeicoloPage {
   public takePicture(sourceType) {
     var options = {
       quality: 50,
-      targetWidth: 400,
-      targetHeight: 400,
+      targetWidth: 45,
+      targetHeight: 45,
       sourceType: sourceType,
       saveToPhotoAlbum: true,
       correctOrientation: true,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      allowEdit: true
+      mediaType: this.camera.MediaType.PICTURE
     };
 
     this.camera.getPicture(options).then((imageURI) => {

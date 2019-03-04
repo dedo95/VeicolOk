@@ -33,9 +33,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VeicoloPage');
-    this.utenteService.getUtente().subscribe((val)=>{
-      console.log(val);
-    });
     this.listaVeicoli();
   }
 

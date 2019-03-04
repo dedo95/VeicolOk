@@ -30,12 +30,10 @@ export class FamigliaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FamigliaPage');
     this.utenteService.getUtente().subscribe((utente)=>{
-      console.log(utente);
       this.utente=utente;
     });
     this.famigliaService.getFamiglia().subscribe(famiglia=>{
       this.famiglia=famiglia;
-      console.log(famiglia);
       if(this.famiglia==null){
         this.exist=true;
       }else{
@@ -54,7 +52,6 @@ export class FamigliaPage {
   delete(famigliare) {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i] == famigliare) {
-        console.log("pippo");
         this.users.splice(i, 1);
       }
     }

@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>{{title|translate}}</ion-title>
   </ion-navbar>
   <ion-item style="background-color:#fffbaa" no-lines>
-    Informazioni {{title}}
+    {{'INFO'|translate}} {{title|translate}}
   </ion-item>
 </ion-header>
 
@@ -13,7 +13,7 @@
     <ion-card>
       <ion-list >
           <ion-item >
-            <ion-label>{{'DESCRIZIONE'|translate}} : <b>{{title}}</b> </ion-label>
+            <ion-label>{{'DESCRIZIONE'|translate}} : <b>{{title|translate}}</b> </ion-label>
           </ion-item>
 
           <ion-item >

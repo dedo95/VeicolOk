@@ -43,8 +43,8 @@
     "VERDE": "GREEN",
     "GRIGIO": "GREY",
     "CAVALLI": "Horses",
-    "CILINDRATA": "DISPLACEMENT",
-    "TIPOLOGIA": "TYPOLOGY",
+    "CILINDRATA": "Displacement",
+    "TIPOLOGIA": "Typology",
     "DELETE_BUTTON": "Delete",
     "SAVE_BUTTON": "Save",
     "CANCEL_BUTTON": "Cancel",
@@ -52,6 +52,18 @@
     "DELETE_VEICOLO_MESSAGE": "Do you want to delete the vehicle?",
     "CREATE_BUTTON":"CREATE",
     "IMPORTO":"Amount",
-    "SCADENZA":"Expiration Date"
+    "SCADENZA":"Expiration Date",
+    "AGGIUNGI_MEMBRO_TITLE":"Hesitate to add member :",
+    "AGGIUNGI_MEMBRO_MESSAGE_1":"Member Added",
+    "AGGIUNGI_MEMBRO_MESSAGE_2":"The user already belongs to a family",
+    "AGGIUNGI_MEMBRO_MESSAGE_3":"Invalid email",
+    "CATEGORIA":"Category",
+    "NUMERO_PATENTE":"License Number",
+    "PUNTI":"Points",
+    "INTESTATARIO":"Owner",
+    "Assicurazione":"Insurance",
+    "Bollo":"Car Tax",
+    "Revisione":"Revision",
+    "INFO":"Information"
 
 }

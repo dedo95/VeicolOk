@@ -52,7 +52,18 @@
     "DELETE_VEICOLO_MESSAGE": "Vuoi eliminare il Veicolo?",
     "CREATE_BUTTON":"Crea",
     "IMPORTO":"Importo",
-    "SCADENZA":"Data Scadenza"
-
+    "SCADENZA":"Data Scadenza",
+    "AGGIUNGI_MEMBRO_TITLE":"Esito aggiungi membro :",
+    "AGGIUNGI_MEMBRO_MESSAGE_1":"Membro Aggiunto",
+    "AGGIUNGI_MEMBRO_MESSAGE_2":"L'utente appartiene gia ad una famiglia",
+    "AGGIUNGI_MEMBRO_MESSAGE_3":"Email non valida",
+    "CATEGORIA":"Categoria",
+    "NUMERO_PATENTE":"Numero Patente",
+    "PUNTI":"Punti",
+    "INTESTATARIO":"Intestatario",
+    "Assicurazione":"Assicurazione",
+    "Bollo":"Bollo",
+    "Revisione":"Revisione",
+    "INFO":"Informazioni"
 
 }
