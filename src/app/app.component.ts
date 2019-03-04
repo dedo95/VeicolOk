@@ -45,8 +45,8 @@ export class MyApp {
               public events: Events,
               private utenteService: UtenteService,
               public alertCtrl: AlertController,
-              private _DomSanitizationService: DomSanitizer
-  ) {
+              private _DomSanitizationService: DomSanitizer){
+
     this.initTranslate();
     this.subscribeToEvents();
     this.platform.ready().then(() => {
@@ -62,12 +62,9 @@ export class MyApp {
           this.rootPage = LoginPage;
         }
       });
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    // set our app's pages
     this.pages = [
       {title: 'CONTATTACI', component: ContattaciPage, icon: "ios-chatbubbles-outline"},
       {title: 'CHI_SIAMO', component: ChiSiamoPage, icon: "ios-information-circle-outline"},
@@ -75,8 +72,6 @@ export class MyApp {
   }
 
   initTranslate() {
-
-    // Set the default language for translation strings, and the current language.
     let linguaPreferita = this.linguaService.getLinguaPreferita();
     this.translate.setDefaultLang(linguaPreferita);
     this.linguaService.getLinguaAttuale().subscribe((lingua: string) => {
@@ -85,7 +80,6 @@ export class MyApp {
       } else {
         this.translate.use(linguaPreferita);
         this.linguaService.updateLingua(linguaPreferita);
-
       }
       if (lingua === 'it') {
         this.lang = "italiano";
@@ -95,31 +89,9 @@ export class MyApp {
     });
   }
 
-
-  /*initializeApp() {
-    this.platform.ready().then(() => {
-      this.utenteService.getUtente().subscribe((utente: Utente) => {
-        if (utente != null) {
-          this.utente = utente;
-          this.rootPage = TabsPage;
-        } else {
-          this.rootPage = LoginPage;
-        }
-      });
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
-*/
   openPage(page) {
-    // close the menu when clicking a link from the menu
     this.menu.close();
     this.nav.push(page.component);
-    // navigate to the new page if it is not the current page
-    //this.nav.setRoot(page.component);
-
   }
 
   click_on(value) {

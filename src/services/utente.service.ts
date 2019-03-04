@@ -8,11 +8,9 @@ import { Storage } from '@ionic/storage';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
 
-
 @Injectable()
 export class UtenteService {
 
-  private apiUrl:string='';
   private tokenUtente: string;
 
     constructor(public http: HttpClient, public storage: Storage) {
@@ -26,7 +24,6 @@ export class UtenteService {
     }
 
     create(user: Utente) {
-        console.log("INIZIO");
         return this.http.post(URL.API_USE, user).toPromise()
             .then((response: Response) => {
                 return response.json();
@@ -37,15 +34,10 @@ export class UtenteService {
   login(account: Account): Observable<Utente> {
     return this.http.post<Utente>(URL.URL_LOGIN, account, { observe: 'response' })
       .map((resp: HttpResponse<Utente>) => {
-        console.log("resp: "+resp);
         const token = resp.headers.get(X_AUTH);
-        console.log("token: "+token);
         this.storage.set(AUTH_TOKEN, token);
         this.tokenUtente = token;
-        //Utente memorizzato nello storage in modo tale che se si vuole cambiare il
-        //profilo dell'utente stesso non si fa una chiamata REST.
         this.storage.set(UTENTE_STORAGE, resp.body);
-        console.log(resp.body);
         return resp.body;
       });
   }
@@ -53,7 +45,6 @@ export class UtenteService {
   updateImage(image){
     return this.http.post(URL.URL_IMG,image,{ observe: 'response' }).toPromise()
       .then((response: HttpResponse<Utente>)=>{
-        console.log(response.body);
           this.storage.set(UTENTE_STORAGE, response.body);
           return response;
       }).catch(error=> {console.log(error)});
@@ -61,7 +52,6 @@ export class UtenteService {
 
     stamp() {
         this.storage.get(UTENTE_STORAGE).then((val) => {
-            console.log(val);
         });
     }
 
@@ -82,9 +72,6 @@ export class UtenteService {
   updateProfilo(nuovoUtente: Utente): Observable<Utente> {
     return this.http.post<Utente>(URL.URL_UPDATE_PROFILO, nuovoUtente, { observe: 'response' })
       .map((resp: HttpResponse<Utente>) => {
-        //Aggiornamento dell'utente nello storage.
-        //Utente memorizzato nello storage per evitare chiamata REST quando si vuole modificare il profilo
-        //e se l'utente chiude la app e la riapre i dati sono gia' presenti
         if(resp.body.img.length===0) {
           resp.body.img = "../../assets/imgs/default.png";
         }

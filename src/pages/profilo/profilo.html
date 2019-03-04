@@ -18,35 +18,35 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-<ion-card>
-  <ion-item no-lines>
-    <ion-avatar (click)="modifica()">
-      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)"  [(ngModel)]="image" ngDefaultControl style="width: 150px;height: 150px;margin:auto;">
-    </ion-avatar>
-  </ion-item>
-
-  <form #profileForm="ngForm"  >
-  <ion-list no-lines padding>
-    <ion-item>
-      <ion-label style="color:black">{{'Cognome'|translate}}: </ion-label>
-      <ion-input color="black"  style="font-weight:bold;" name="cognome" required [(ngModel)]="utente.cognome" #cognome="ngModel"></ion-input>
+  <ion-card>
+    <ion-item no-lines>
+      <ion-avatar (click)="modifica()">
+        <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)"  [(ngModel)]="image" ngDefaultControl style="width: 150px;height: 150px;margin:auto;">
+      </ion-avatar>
     </ion-item>
 
-    <ion-item>
-      <ion-label style="color:black">{{'Nome'|translate}} : </ion-label>
-      <ion-input color="black" style="font-weight:bold;"  name="nome" [(ngModel)]="utente.nome" #nome="ngModel" required> </ion-input>
-    </ion-item>
+    <form #profileForm="ngForm"  >
+      <ion-list no-lines padding>
+        <ion-item>
+          <ion-label style="color:black">{{'Cognome'|translate}}: </ion-label>
+          <ion-input color="black"  style="font-weight:bold;" name="cognome" required [(ngModel)]="utente.cognome" #cognome="ngModel"></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label style="color:black">{{'DATA'|translate}} </ion-label>
-      <ion-input  color="black"  style="font-weight:bold;" name="nascita" required [(ngModel)]="utente.d_nascita" #d_nascita="ngModel"> </ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-label style="color:black">{{'Nome'|translate}} : </ion-label>
+          <ion-input color="black" style="font-weight:bold;"  name="nome" [(ngModel)]="utente.nome" #nome="ngModel" required> </ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label style="color:black">Email: </ion-label>
-      <ion-input color="black" style="font-weight:bold;"  name="email" required [(ngModel)]="utente.email" #email="ngModel" type="email"> </ion-input>
-    </ion-item>
-  </ion-list>
-  </form>
-</ion-card>
+        <ion-item>
+          <ion-label style="color:black">{{'DATA'|translate}} </ion-label>
+          <ion-input  color="black"  style="font-weight:bold;" name="nascita" required [(ngModel)]="utente.d_nascita" #d_nascita="ngModel"> </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="color:black">Email: </ion-label>
+          <ion-input color="black" style="font-weight:bold;"  name="email" required [(ngModel)]="utente.email" #email="ngModel" type="email"> </ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-card>
 </ion-content>

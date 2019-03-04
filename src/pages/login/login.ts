@@ -7,13 +7,6 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Utente} from "../../model/utente.model";
 import { TranslateService} from "@ngx-translate/core";
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -25,7 +18,12 @@ export class LoginPage {
   loginSubTitle: string;
   account: Account = { username:"dedo@gmail.com", password:"pippo" };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public utenteService: UtenteService,public events: Events,  public alertCtrl: AlertController, public translateService: TranslateService) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public utenteService: UtenteService,
+              public events: Events,
+              public alertCtrl: AlertController,
+              public translateService: TranslateService) {
   }
 
   login(){
@@ -43,7 +41,6 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
     console.log('ionViewDidLoad LoginPage');
     this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
       this.loginSubTitle = data;

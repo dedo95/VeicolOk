@@ -8,6 +8,5 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ContattaciPage {
   constructor(public navCtrl: NavController, translate:TranslateService) {
-    //translate.setDefaultLang('it');
   }
 }

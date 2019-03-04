@@ -32,7 +32,6 @@ export class AggiungiMembroPage {
       console.log("2222222222"+JSON.stringify(this.mex));
       this.creazioneOk(this.mex.messaggio);
     }));
-
   }
 
   creazioneOk(messaggio:string){

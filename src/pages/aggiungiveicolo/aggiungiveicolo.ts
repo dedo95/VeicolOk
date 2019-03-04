@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { VeicoloService } from '../../services/veicolo.service';
 import { Storage } from '@ionic/storage';
-import { UtenteService } from '../../services/utente.service';
 import {TabsPage} from "../tabs/tabs";
 import {Veicolo} from "../../model/veicolo.model";
-
-/**
- * Generated class for the AggiungiveicoloPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({

@@ -21,21 +21,17 @@
                 <ion-icon name="ios-arrow-forward" item-right></ion-icon>
             </button> 
             <ion-item color="none">
-
-            <ion-icon item-start name="ios-bookmarks-outline"></ion-icon>
-                
-                {{'LINGUA' | translate}} 
-           
+              <ion-icon item-start name="ios-bookmarks-outline"></ion-icon>
+                {{'LINGUA' | translate}}
             </ion-item>
-            
-                <ion-segment mode="ios" [(ngModel)]="lang">
-                    <ion-segment-button (click)="click_on('it','italiano')" value="italiano" >
+            <ion-segment mode="ios" [(ngModel)]="lang">
+              <ion-segment-button (click)="click_on('it','italiano')" value="italiano" >
                         {{'ITALIANO' | translate}}
-                    </ion-segment-button>
-                    <ion-segment-button (click)="click_on('en','inglese')" value="inglese">
+              </ion-segment-button>
+              <ion-segment-button (click)="click_on('en','inglese')" value="inglese">
                         {{'INGLESE' | translate}}
-                    </ion-segment-button>
-                </ion-segment>
+              </ion-segment-button>
+            </ion-segment>
             <ion-item-divider *ngIf="isLogged" ></ion-item-divider>
             <ion-item style="background-color:#fffbaa" *ngIf="isLogged"></ion-item>
             <ion-item>

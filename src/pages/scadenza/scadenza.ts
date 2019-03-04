@@ -19,6 +19,7 @@ export class ScadenzaPage {
   private s:Scadenza=new Scadenza();
   private veicolo:Veicolo=new Veicolo();
   title:string='';
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private scadenzaService:ScadenzaService,
@@ -30,18 +31,13 @@ export class ScadenzaPage {
     this.isempty=false;
     console.log('ionViewDidLoad ScadenzaPage');
     this.title=this.navParams.get('scadenza');
-    console.log(this.title);
     this.veicolo.targa=this.navParams.get('targa');
     this.scadenzaService.getScadenza(this.navParams.get('targa'),this.navParams.get('scadenza')).subscribe(nuovascadenza=>{
       if (nuovascadenza!==null) {
         this.scadenze = nuovascadenza.valueOf();
-        console.log(this.scadenze);
-        console.log("EEEEE£" + JSON.stringify(this.scadenze));
         this.s = nuovascadenza;
-        //console.log("£££££££££££££££" + this.s);*/
         this.isempty = true;
-        console.log(this.isempty);
-      }console.log(this.isempty);
+      }
     });
   }
 

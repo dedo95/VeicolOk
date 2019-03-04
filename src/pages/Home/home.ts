@@ -36,24 +36,20 @@ export class HomePage {
     this.utenteService.getUtente().subscribe((val)=>{
       console.log(val);
     });
-      this.listaVeicoli();
-      this
+    this.listaVeicoli();
   }
 
   ionViewWillEnter(){
     this.listaVeicoli();
   }
 
-
-
   doRefresh(refresher: Refresher){
-      this.listaVeicoli();
-      refresher.complete();
+    this.listaVeicoli();
+    refresher.complete();
   }
 
   openDetail(veicolo) {
     this.navCtrl.push(InfoVeicoloPage, veicolo);
-    //console.log(utente);
   }
 
   delete(veicolo: Veicolo, sliding:ItemSliding) {
@@ -96,13 +92,6 @@ export class HomePage {
     alert.present();
   }
 
-
-
-
-
-
-
-  
   go_aggiungi_veicolo(){
     this.navCtrl.push(AggiungiveicoloPage);
   }
@@ -110,6 +99,7 @@ export class HomePage {
   listaVeicoli(){
     this.utenteService.getVeicoli().subscribe(veicolo =>{
       this.veicoli=veicolo;
-    })
+    });
   }
+
 }

@@ -46,12 +46,9 @@ export class ProfiloPage {
     this.utenteService.getUtente().subscribe((user) => {
       this.utente = user;
       if (this.utente.img.length ===0) {
-        console.log("VEROOOOO");
         this.utente.img = "../../assets/imgs/user.png";
-        console.log(this._DomSanitizationService.bypassSecurityTrustUrl(this.utente.img));
       }
-      console.log(this.utente);
-    })
+    });
   }
 
   onSubmit(profileForm: NgForm){
@@ -66,7 +63,6 @@ export class ProfiloPage {
   }
 
   modifica() {
-    console.log("INIZIO CAMERA");
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
       buttons: [
@@ -92,7 +88,6 @@ export class ProfiloPage {
   }
 
   public takePicture(sourceType) {
-    // Create options for the Camera Dialog
     var options = {
       quality: 10,
       targetWidth: 50,
@@ -101,20 +96,15 @@ export class ProfiloPage {
       saveToPhotoAlbum: true,
       correctOrientation: true,
       destinationType: this.camera.DestinationType.DATA_URL,
-      // In this app, dynamically set the picture source, Camera or photo gallery
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
-    // Get the data of an image
     this.camera.getPicture(options).then((imageURI) => {
-      console.log("RRRRRRRRRRRRRRRRRRr");
       let base64Image = "data:image/jpeg;base64,"+ imageURI;
-      console.log(base64Image);
       this.utenteService.updateImage(base64Image);
     }, (err) => {
       console.log(err)
     });
-
   }
 
   doRefresh(refresher: Refresher){

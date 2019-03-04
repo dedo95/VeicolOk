@@ -55,18 +55,13 @@ export class InfoVeicoloPage {
     this.targa=this.veicolo.targa;
     this.tipologia=this.veicolo.tipologia;
     this.utente=this.veicolo.utente;
-    console.log(this.veicolo);
     if (this.veicolo.img.length ===0) {
       console.log("VEROOOOO");
       this.veicolo.img = "../../assets/imgs/default.png";
-      //console.log(this._DomSanitizationService.bypassSecurityTrustUrl(this.veicolo.img));
     }
   }
 
-
-
   onSubmit(veicoloForm: NgForm){
-   // if (veicoloForm.valid){
       this.veicolo.img='';
       this.veicoloService.updateVeicolo(this.veicolo).subscribe((nuovoVeicolo: Veicolo) => {
         this.veicolo = nuovoVeicolo;
@@ -74,11 +69,9 @@ export class InfoVeicoloPage {
           this.veicolo.img="../../assets/imgs/default.png";
         }
       });
-    //}
   }
 
   modifica() {
-    console.log("INIZIO CAMERA");
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
       buttons: [
@@ -104,7 +97,6 @@ export class InfoVeicoloPage {
   }
 
   public takePicture(sourceType) {
-    // Create options for the Camera Dialog
     var options = {
       quality: 50,
       targetWidth: 400,
@@ -113,23 +105,18 @@ export class InfoVeicoloPage {
       saveToPhotoAlbum: true,
       correctOrientation: true,
       destinationType: this.camera.DestinationType.DATA_URL,
-      // In this app, dynamically set the picture source, Camera or photo gallery
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       allowEdit: true
     };
-    // Get the data of an image
+
     this.camera.getPicture(options).then((imageURI) => {
-      console.log("RRRRRRRRRRRRRRRRRRr");
       let base64Image = "data:image/jpeg;base64,"+ imageURI;
-      console.log(base64Image);
       this.veicolo.img=base64Image;
-      console.log(this.veicolo);
       this.veicoloService.updateImage(this.veicolo);
     }, (err) => {
       console.log(err)
     });
-
   }
 
   doRefresh(refresher: Refresher){

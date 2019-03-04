@@ -39,4 +39,3 @@ export const UTENTE_STORAGE = "utente";
 
 export const LINGUA = 'lingua';
 
-export const VEICOLO_IMG = 'img';
