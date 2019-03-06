@@ -64,6 +64,9 @@
     "Assicurazione":"Insurance",
     "Bollo":"Car Tax",
     "Revisione":"Revision",
-    "INFO":"Information"
+    "INFO":"Information",
+    "LISTAINTERVENTI":"List of Interventions",
+    "Interventi":"Interventions",
+    "Scadenze":"Deadlines"
 
 }

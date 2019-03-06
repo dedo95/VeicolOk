@@ -41,6 +41,7 @@ import {FamigliaService} from "../services/famiglia.service";
 import {ScadenzaPage} from "../pages/scadenza/scadenza";
 import {ScadenzaService} from "../services/scadenza.service";
 import {FamigliarePage} from "../pages/famigliare/famigliare";
+import { ListainterventiPage } from '../pages/listainterventi/listainterventi';
 
 
 
@@ -68,7 +69,8 @@ export function createTranslateLoader(http: HttpClient) {
     AggiungiMembroPage,
     InfoVeicoloPage,
     ScadenzaPage,
-    FamigliarePage
+    FamigliarePage,
+    ListainterventiPage
     
   ],
   imports: [
@@ -107,7 +109,8 @@ export function createTranslateLoader(http: HttpClient) {
     AggiungiMembroPage,
     InfoVeicoloPage,
     ScadenzaPage,
-    FamigliarePage
+    FamigliarePage,
+    ListainterventiPage
   ],
   providers: [
     StatusBar,

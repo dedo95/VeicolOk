@@ -64,6 +64,9 @@
     "Assicurazione":"Assicurazione",
     "Bollo":"Bollo",
     "Revisione":"Revisione",
-    "INFO":"Informazioni"
+    "INFO":"Informazioni",
+    "LISTAINTERVENTI":"Lista Interventi",
+    "Interventi": "Interventi",
+    "Scadenze":"Scadenze"
 
 }

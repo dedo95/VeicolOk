@@ -14,6 +14,7 @@ import {Veicolo} from "../../model/veicolo.model";
 import {ContattaciPage} from "../contattaci/contattaci";
 import {ChiSiamoPage} from "../chi-siamo/chi-siamo";
 import {ScadenzaPage} from "../scadenza/scadenza";
+import { ListainterventiPage } from '../listainterventi/listainterventi';
 
 declare var cordova: any;
 
@@ -123,6 +124,10 @@ export class InfoVeicoloPage {
 
   openPage(scadenza) {
     this.navCtrl.push(scadenza.component,{scadenza:scadenza.title,targa:this.targa});
+  }
+
+  openInterventi(){
+    this.navCtrl.push(ListainterventiPage);
   }
 
 }
