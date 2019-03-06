@@ -27,7 +27,6 @@ export class LoginPage {
   }
 
   login(){
-    console.log("Account : "+this.account);
       this.utenteService.login(this.account)
         .subscribe((utente: Utente) => {
             this.events.publish('login', utente);
