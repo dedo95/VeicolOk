@@ -2,52 +2,45 @@
 
     <ion-header>
         <ion-toolbar>
-            <ion-title>Pages</ion-title>
+            <ion-item class="user-menu" *ngIf="isLogged" (click)="goToProfilo()" no-lines style="text-align: center;">
+                <ion-avatar item-start>
+                    <img src="../assets/imgs/user.png" style="width: 60px;height: 60px;" *ngIf="image">
+                  <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)"  style="width: 60px;height: 60px;" *ngIf="!image">
+                  <div class="item-text-center item-text-wrap">{{utente.nome+' '+utente.cognome}}</div>
+                </ion-avatar>
+            </ion-item >
         </ion-toolbar>
     </ion-header>
 
     <ion-content>
         <ion-list>
-            <ion-item style="background-color:#fffbaa"></ion-item>
+            <ion-item style="background-color:#fffbaa"> </ion-item>
             <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
-                {{p.title}}
+                <ion-icon item-start name={{p.icon}}></ion-icon>
+                {{p.title |translate}}
                 <ion-icon name="ios-arrow-forward" item-right></ion-icon>
             </button> 
-            <ion-item color="none" menuClose="" style="text-align:center;">
-                Lingua
-           
+            <ion-item color="none">
+              <ion-icon item-start name="ios-bookmarks-outline"></ion-icon>
+                {{'LINGUA' | translate}}
             </ion-item>
-            
-                <ion-segment mode="ios" [(ngModel)]="selectedTab">
-                    <ion-segment-button value="Italiano" >
-                        Italiano
-                    </ion-segment-button>
-                    <ion-segment-button value="Inglese">
-                        Inglese
-                    </ion-segment-button>
-                </ion-segment>
-            <ion-item-divider></ion-item-divider>
-            <ion-item style="background-color:#fffbaa"></ion-item>
+            <ion-segment mode="ios" [(ngModel)]="lang">
+              <ion-segment-button (click)="click_on('it','italiano')" value="italiano" >
+                        {{'ITALIANO' | translate}}
+              </ion-segment-button>
+              <ion-segment-button (click)="click_on('en','inglese')" value="inglese">
+                        {{'INGLESE' | translate}}
+              </ion-segment-button>
+            </ion-segment>
+            <ion-item-divider *ngIf="isLogged" ></ion-item-divider>
+            <ion-item style="background-color:#fffbaa" *ngIf="isLogged"></ion-item>
             <ion-item>
-            <button ion-button outline default block id="logout">
-                Esci
+            <button ion-button outline default block id="logout" (click)="logout()" *ngIf="isLogged">
+                {{'ESCI' | translate}}
                 <ion-icon name="md-exit"></ion-icon>
             </button>
             </ion-item>
         </ion-list>
-       <!-- <ion-row>
-            <ion-col no-padding class="column">
-                <button ion-button icon-left small full color="light">
-                    Italiano
-                </button>
-            </ion-col>
-            <ion-col no-padding class="column">
-                <button ion-button icon-left small full color="light">
-                    Inglese
-                </button>
-            </ion-col>
-        </ion-row>-->
-        
     </ion-content>
 </ion-menu>
 

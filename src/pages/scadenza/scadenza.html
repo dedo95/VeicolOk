@@ -1,18 +1,67 @@
-<!--
-  Generated template for the ScadenzaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>scadenza</ion-title>
+    <ion-title>{{title|translate}}</ion-title>
   </ion-navbar>
-
+  <ion-item style="background-color:#fffbaa" no-lines>
+    {{'INFO'|translate}} {{title|translate}}
+  </ion-item>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding >
+  <form #salvaForm="ngForm" *ngIf="isempty">
+    <ion-card>
+      <ion-list >
+          <ion-item >
+            <ion-label>{{'DESCRIZIONE'|translate}} : <b>{{title|translate}}</b> </ion-label>
+          </ion-item>
 
+          <ion-item >
+            <ion-label>{{'IMPORTO'|translate}} € :</ion-label>
+            <ion-input color="black"  style="font-weight:bold;" name="importo" required [(ngModel)]="scadenze.importo" #importo="ngModel"></ion-input>
+          </ion-item>
+
+          <ion-item >
+            <ion-label>{{'SCADENZA'|translate}} :</ion-label>
+            <ion-input color="black"  style="font-weight:bold;" name="data" required [(ngModel)]="scadenze.data" #data="ngModel"></ion-input>
+          </ion-item>
+      </ion-list>
+    </ion-card>
+    <div text-center >
+      <button ion-button class="login_button" default  (click)="salva(salvaForm)">
+        {{'SAVE_BUTTON'|translate}}
+      </button>
+
+      <button ion-button class="login_button" default  (click)="elimina()">
+        {{'DELETE_BUTTON'|translate}}
+      </button>
+    </div>
+  </form>
+
+  <form #creaForm="ngForm" *ngIf="!isempty">
+    <ion-card>
+      <ion-list >
+        <ion-item >
+          <ion-label>{{'DESCRIZIONE'|translate}} : <b>{{title}}</b></ion-label>
+        </ion-item>
+
+        <ion-item >
+          <ion-label>{{'IMPORTO'|translate}} € :</ion-label>
+          <ion-input color="black"  style="font-weight:bold;" name="importo" required [(ngModel)]="scadenze.importo" #importo="ngModel"></ion-input>
+        </ion-item>
+
+        <ion-item >
+          <ion-label>{{'SCADENZA'|translate}} :</ion-label>
+          <ion-input color="black"  style="font-weight:bold;" name="data" required [(ngModel)]="scadenze.data" #data="ngModel"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <div text-center >
+      <button ion-button class="login_button" default (click)="crea(creaForm)" >
+        {{'CREATE_BUTTON'|translate}}
+      </button>
+    </div>
+  </form>
 </ion-content>
+
+

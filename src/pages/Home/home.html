@@ -1,27 +1,38 @@
 <ion-header >
-  <ion-toolbar class="toolbar-color" text-center>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title >Veicoli</ion-title>
-    <ion-buttons end>
-    <button ion-button icon-only (click)="go_aggiungi_veicolo()">
-      <ion-icon name="ios-add" class="my_bar_button"></ion-icon>
-    </button>
-    </ion-buttons>
-  </ion-navbar>
+  <ion-toolbar text-center>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title >{{'Veicoli' | translate}}</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="go_aggiungi_veicolo()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngFor="let veicolo of veicoli">
+    <ion-item-sliding #sliding >
+      <ion-item (click)="openDetail(veicolo)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/default.png" *ngIf="veicolo.img.length===0">
+          <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(veicolo.img)" *ngIf="veicolo.img.length!==0">
+        </ion-avatar>
+        <ion-label>{{veicolo.descrizione}}</ion-label>
+      </ion-item>
+      <ion-item-options side="right" (click)="delete(veicolo, sliding)">
+        <button ion-button color="primary" >
+          <ion-icon name="trash"></ion-icon> {{'DELETE_BUTTON'|translate}}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
