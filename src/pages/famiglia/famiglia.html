@@ -21,6 +21,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-card>
   <button ion-button icon-only *ngIf="exist" (click)="presentAlertPrompt()">
     {{'Crea Famiglia' | translate}}
     <ion-icon name="ios-person-add-outline"></ion-icon>
@@ -59,4 +60,5 @@
       </ion-item-sliding>
     </ion-list>
   </ion-list>
+  </ion-card>
 </ion-content>

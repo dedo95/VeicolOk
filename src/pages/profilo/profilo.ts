@@ -110,6 +110,9 @@ export class ProfiloPage {
   doRefresh(refresher: Refresher){
     this.utenteService.getUtente().subscribe((user) => {
       this.utente = user;
+      if (this.utente.img.length ===0) {
+        this.utente.img = "../../assets/imgs/user.png";
+      }
       refresher.complete();
     });
   }
