@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AggiungiinterventoPage } from '../aggiungiintervento/aggiungiintervento';
 
 /**
  * Generated class for the ListainterventiPage page.
@@ -20,6 +21,9 @@ export class ListainterventiPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListainterventiPage');
+  }
+  go_aggiungi_intervento(){
+    this.navCtrl.push(AggiungiinterventoPage);
   }
 
 }

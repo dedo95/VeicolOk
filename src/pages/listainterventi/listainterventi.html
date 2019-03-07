@@ -7,8 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>listainterventi</ion-title>
+    <ion-title>{{'Lista Interventi' | translate}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="go_aggiungi_intervento()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+  
 
 </ion-header>
 
