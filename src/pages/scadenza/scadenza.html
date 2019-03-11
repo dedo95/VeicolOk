@@ -9,7 +9,7 @@
 
 
 <ion-content padding >
-  <form #salvaForm="ngForm" *ngIf="isempty">
+  <form #salvaForm="ngForm" *ngIf="isempty" novalidate>
     <ion-card>
       <ion-list >
           <ion-item >
@@ -28,7 +28,7 @@
       </ion-list>
     </ion-card>
     <div text-center >
-      <button ion-button class="login_button" default  (click)="salva(salvaForm)">
+      <button ion-button class="login_button" default  (click)="salva(salvaForm)" [disabled]="!salvaForm.form.valid">
         {{'SAVE_BUTTON'|translate}}
       </button>
 
@@ -38,7 +38,7 @@
     </div>
   </form>
 
-  <form #creaForm="ngForm" *ngIf="!isempty">
+  <form #creaForm="ngForm" *ngIf="!isempty" novalidate>
     <ion-card>
       <ion-list >
         <ion-item >
@@ -57,7 +57,7 @@
       </ion-list>
     </ion-card>
     <div text-center >
-      <button ion-button class="login_button" default (click)="crea(creaForm)" >
+      <button ion-button class="login_button" default (click)="crea(creaForm)" [disabled]="!creaForm.form.valid" >
         {{'CREATE_BUTTON'|translate}}
       </button>
     </div>

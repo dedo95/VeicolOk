@@ -21,6 +21,8 @@ export class PatentePage {
   private cancelButton: string;
   private saveButton:string;
   private title:string;
+  private deleteMessage:string;
+  private deleteButton:string;
 
   constructor(public navCtrl: NavController,
               public patenteService:PatenteService,
@@ -56,8 +58,38 @@ export class PatentePage {
   }
 
   elimina(){
-    this.patenteService.deletePatente(new Patente());
-    this.exist=false;
+    this.translateService.get("DELETE_BUTTON").subscribe((data:string)=>{
+      this.deleteButton=data;
+    });
+    this.translateService.get("CANCEL_BUTTON").subscribe((data:string)=>{
+      this.cancelButton=data;
+    });
+    this.translateService.get("DELETE_PATENTE_TITLE").subscribe((data:string)=>{
+      this.title=data;
+    });
+    this.translateService.get("DELETE_PATENTE_MESSAGE").subscribe((data:string)=>{
+      this.deleteMessage=data;
+    });
+    let alert = this.alertController.create({
+      title: this.title,
+      subTitle: this.deleteMessage,
+      buttons: [
+        {
+          text:this.deleteButton,
+          handler :()=>{
+            this.patenteService.deletePatente(new Patente());
+            this.exist=false;
+          }
+        },
+        {
+          text:this.cancelButton,
+          handler:()=>{
+
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   doRefresh(refresher: Refresher){

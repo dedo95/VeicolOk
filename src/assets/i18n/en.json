@@ -68,6 +68,12 @@
     "LISTAINTERVENTI":"List of Interventions",
     "Interventi":"Interventions",
     "Scadenze":"Deadlines",
-    "Lista Interventi":"List of Interventions"
+    "Lista Interventi":"List of Interventions",
+    "DELETE_SCADENZA_TITLE": "Delete Expiration Date",
+    "DELETE_SCADENZA_MESSAGE": "Are you sure you want to delete the  Expiration Date ?",
+    "DELETE_PATENTE_TITLE":"Delete License",
+    "DELETE_PATENTE_MESSAGE":"Are you sure you want to delete your license ?",
+    "DELETE_MEMBRO_TITLE":"Delete Member",
+    "DELETE_MEMBRO_MSG": "Are you sure you want to delete the selected member ?"
 
 }
