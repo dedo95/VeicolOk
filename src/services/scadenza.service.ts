@@ -28,11 +28,11 @@ export class ScadenzaService {
       });
   }
 
-  creaScadenza(nuovaScadenza:Scadenza){
-    return this.http.post(URL.URL_CREA_SCADENZA,nuovaScadenza).toPromise()
-      .then((response: Response) => {
-        return response.json();
-      }).catch(error => { console.error() });
+  creaScadenza(nuovaScadenza:Scadenza):Observable<Scadenza>{
+    return this.http.post(URL.URL_CREA_SCADENZA,nuovaScadenza,{ observe: 'response' })
+      .map((resp: HttpResponse<Scadenza>) => {
+        return resp.body;
+      });
   }
 
   eliminaScadenza(scadenza: Scadenza){

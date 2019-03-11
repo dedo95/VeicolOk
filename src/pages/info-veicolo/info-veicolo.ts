@@ -61,7 +61,7 @@ export class InfoVeicoloPage {
     }
   }
 
-  onSubmit(veicoloForm: NgForm){
+  onSubmit(){
       this.veicolo.img='';
       this.veicoloService.updateVeicolo(this.veicolo).subscribe((nuovoVeicolo: Veicolo) => {
         this.veicolo = nuovoVeicolo;

@@ -8,6 +8,7 @@ import {UtenteService} from "../../services/utente.service";
 import {FamigliarePage} from "../famigliare/famigliare";
 import {ProfiloPage} from "../profilo/profilo";
 import {TranslateService} from "@ngx-translate/core";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @IonicPage()
 @Component({
@@ -24,6 +25,8 @@ export class FamigliaPage {
   private cancelButton: string;
   private deleteTitle:string;
   private deleteMessage:string;
+  private userImg:boolean;
+  private famigliariImg:Array<boolean>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -31,13 +34,17 @@ export class FamigliaPage {
               public famigliaService:FamigliaService,
               private utenteService:UtenteService,
               public translateService:TranslateService,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              private _DomSanitizationService: DomSanitizer) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FamigliaPage');
     this.utenteService.getUtente().subscribe((utente)=>{
       this.utente=utente;
+      if (utente.img.length===0)
+        this.userImg=false;
+      else this.userImg=true;
     });
     this.famigliaService.getFamiglia().subscribe(famiglia=>{
       this.famiglia=famiglia;
@@ -52,6 +59,12 @@ export class FamigliaPage {
     });
   }
 
+  ionViewWillEnter(){
+    this.famigliaService.getFamigliari().subscribe(famigliare=>{
+      this.users=famigliare;
+    });
+  }
+
   goAggiungi_Membro(){
     this.navCtrl.push(AggiungiMembroPage);
   }
@@ -63,10 +76,10 @@ export class FamigliaPage {
     this.translateService.get("CANCEL_BUTTON").subscribe((data:string)=>{
       this.cancelButton=data;
     });
-    this.translateService.get("DELETE_VEICOLO_TITLE").subscribe((data:string)=>{
+    this.translateService.get("DELETE_MEMBRO_TITLE").subscribe((data:string)=>{
       this.deleteTitle=data;
     });
-    this.translateService.get("DELETE_VEICOLO_MESSAGE").subscribe((data:string)=>{
+    this.translateService.get("DELETE_MEMBRO_MSG").subscribe((data:string)=>{
       this.deleteMessage=data;
     });
     let alert = this.alertCtrl.create({
@@ -139,6 +152,12 @@ export class FamigliaPage {
   }
 
   doRefresh(refresher: Refresher){
+    this.utenteService.getUtente().subscribe((utente)=>{
+      this.utente=utente;
+      if (utente.img.length===0)
+        this.userImg=false;
+      else this.userImg=true;
+    });
     this.famigliaService.getFamigliari().subscribe(famigliare =>{
       this.users=famigliare;
     });

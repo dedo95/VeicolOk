@@ -23,22 +23,22 @@
     <ion-card *ngIf="exist">
         <ion-list>
           <ion-item>
-            <ion-label color="black">{{'Numero '|translate}} : </ion-label>
+            <ion-label color="black">{{'NUMERO_PATENTE'|translate}} : </ion-label>
             <ion-input color="black" style="font-weight:bold;"  name="num_patente" [(ngModel)]="patente.num_patente" #num_patente="ngModel" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label color="black">{{'Categoria '|translate}} :</ion-label>
+            <ion-label color="black">{{'CATEGORIA'|translate}} :</ion-label>
             <ion-input color="black" style="font-weight:bold;"  name="categoria" [(ngModel)]="patente.categoria" #categoria="ngModel" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label color="black">{{'Punti '|translate}} : </ion-label>
+            <ion-label color="black">{{'PUNTI'|translate}} : </ion-label>
             <ion-input color="black" style="font-weight:bold;"  name="punti" [(ngModel)]="patente.punti" #punti="ngModel" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label color="black">{{'Scadenza '|translate}} : </ion-label>
+            <ion-label color="black">{{'SCADENZA'|translate}} : </ion-label>
             <ion-input color="black" style="font-weight:bold;"  name="scadenza" [(ngModel)]="patente.scadenza" #scadenza="ngModel" required></ion-input >
           </ion-item>
         </ion-list>

@@ -39,7 +39,8 @@
 
     <ion-item (click)="openProfilo()">
       <ion-avatar item-start>
-        <img src="../../assets/imgs/default.png" >
+        <img src="../../assets/imgs/default.png" *ngIf="!userImg">
+        <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)" *ngIf="userImg">
       </ion-avatar>
       <b>{{utente.nome+' '+utente.cognome}}</b>(Io)
     </ion-item>
@@ -48,7 +49,8 @@
       <ion-item-sliding #sliding >
         <ion-item (click)="openDetail(famigliare)">
           <ion-avatar item-start>
-            <img src="../../assets/imgs/default.png" >
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(famigliare.img)" *ngIf="famigliare.img.length!==0">
+            <img src="../../assets/imgs/default.png" *ngIf="famigliare.img.length===0">
           </ion-avatar>
           <b>{{famigliare.nome+' '+famigliare.cognome}}</b>
         </ion-item>
