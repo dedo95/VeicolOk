@@ -5,7 +5,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <form #veicoloForm="ngForm" novalidate (ngSubmit)="creaVeicolo(veicoloForm)">
     <ion-item>
@@ -59,3 +58,6 @@
     <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Crea Veicolo </button>
   </form>
 </ion-content>
+
+
+
