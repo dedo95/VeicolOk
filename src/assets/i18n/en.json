@@ -50,7 +50,7 @@
     "CANCEL_BUTTON": "Cancel",
     "DELETE_VEICOLO_TITLE":"Delete Veicle",
     "DELETE_VEICOLO_MESSAGE": "Do you want to delete the vehicle?",
-    "CREATE_BUTTON":"CREATE",
+    "CREATE_BUTTON":"Create",
     "IMPORTO":"Amount",
     "SCADENZA":"Expiration Date",
     "AGGIUNGI_MEMBRO_TITLE":"Hesitate to add member :",
@@ -74,6 +74,8 @@
     "DELETE_PATENTE_TITLE":"Delete License",
     "DELETE_PATENTE_MESSAGE":"Are you sure you want to delete your license ?",
     "DELETE_MEMBRO_TITLE":"Delete Member",
-    "DELETE_MEMBRO_MSG": "Are you sure you want to delete the selected member ?"
+    "DELETE_MEMBRO_MSG": "Are you sure you want to delete the selected member ?",
+    "CITTA": "City",
+    "NOTE": "Notes"
 
 }

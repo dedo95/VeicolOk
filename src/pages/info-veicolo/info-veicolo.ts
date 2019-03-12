@@ -127,7 +127,7 @@ export class InfoVeicoloPage {
   }
 
   openInterventi(){
-    this.navCtrl.push(ListainterventiPage);
+    this.navCtrl.push(ListainterventiPage,this.targa);
   }
 
 }

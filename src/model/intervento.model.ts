@@ -1,8 +1,10 @@
+import {Veicolo} from "./veicolo.model";
+
 export class Intervento {
-    Id_M: String;
     descrizione: String;
     importo: String;
-    data_m: String;
+    data: String;
     note: String;
     città: String;
+    veicolo:Veicolo;
 }
