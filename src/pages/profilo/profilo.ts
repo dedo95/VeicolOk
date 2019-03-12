@@ -89,9 +89,9 @@ export class ProfiloPage {
 
   public takePicture(sourceType) {
     var options = {
-      quality: 90,
-      targetWidth: 80,
-      targetHeight: 80,
+      quality: 100,
+      targetWidth: 200,
+      targetHeight: 150,
       sourceType: sourceType,
       saveToPhotoAlbum: true,
       correctOrientation: true,

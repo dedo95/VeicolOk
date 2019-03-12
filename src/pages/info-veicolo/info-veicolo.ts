@@ -98,9 +98,9 @@ export class InfoVeicoloPage {
 
   public takePicture(sourceType) {
     var options = {
-      quality: 50,
-      targetWidth: 45,
-      targetHeight: 45,
+      quality: 100,
+      targetWidth: 200,
+      targetHeight: 150,
       sourceType: sourceType,
       saveToPhotoAlbum: true,
       correctOrientation: true,

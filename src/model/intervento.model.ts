@@ -1,4 +1,4 @@
-export class Manutenzione {
+export class Intervento {
     Id_M: String;
     descrizione: String;
     importo: String;

@@ -1,10 +1,9 @@
-import {Component, SystemJsNgModuleLoader} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Scadenza} from "../../model/scadenza.model";
 import {ScadenzaService} from "../../services/scadenza.service";
 import {NgForm} from "@angular/forms";
 import {Veicolo} from "../../model/veicolo.model";
-import {LoginPage} from "../login/login";
 import {TranslateService} from "@ngx-translate/core";
 
 
