@@ -52,7 +52,7 @@
 
         <ion-item >
           <ion-label>{{'SCADENZA'|translate}} :</ion-label>
-          <ion-input color="black"  style="font-weight:bold;" name="data" required [(ngModel)]="scadenze.data" #data="ngModel"></ion-input>
+          <ion-datetime displayFormat="DD/MM/YYYY" required [(ngModel)]="scadenze.data" #data="ngModel" name="data"></ion-datetime>
         </ion-item>
       </ion-list>
     </ion-card>

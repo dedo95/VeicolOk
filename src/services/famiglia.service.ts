@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {URL} from "../constants";
 import {Utente} from "../model/utente.model";
 import {Message_Response} from "../model/message_response.model";
+import {Famiglia} from "../model/famiglia.model";
 
 @Injectable()
 export class FamigliaService {
@@ -12,7 +13,6 @@ export class FamigliaService {
   }
 
   creaFamiglia(name:string){
-    console.log("Creazione Familgia");
     return this.http.post(URL.API_FAM,name).toPromise()
       .then((response: Response) => {
         return response.json();
@@ -20,24 +20,24 @@ export class FamigliaService {
       );
   }
 
-  getFamiglia(): Observable<any> {
-    return this.http.get(URL.URL_FAMIGLIA);
+  getFamiglia(): Observable<Famiglia> {
+    return this.http.get<Famiglia>(URL.URL_FAMIGLIA);
   }
 
-  getFamigliari(): Observable<any>{
-    return this.http.get(URL.URL_FAMIGLIARI);
+  getFamigliari(): Observable<Array<Utente>>{
+    return this.http.get<Array<Utente>>(URL.URL_FAMIGLIARI);
   }
 
   delete(famigliare: Utente){
-    return this.http.post(URL.URL_FAMIGLIARE, famigliare).toPromise()
-      .then((response: Response) => {
-        return response.json();
+    return this.http.post<Utente>(URL.URL_FAMIGLIARE, famigliare).toPromise()
+      .then((response: Utente) => {
+        return response;
       }).catch(error => { console.error() }
       );
   }
 
   aggiungi(email:string):Observable<Message_Response>{
-    return this.http.post(URL.URL_AGGIUNGI,email,{ observe: 'response' })
+    return this.http.post<Message_Response>(URL.URL_AGGIUNGI,email,{ observe: 'response' })
       .map((resp :HttpResponse<Message_Response>)=>{
         return resp.body;
       });

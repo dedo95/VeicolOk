@@ -74,6 +74,8 @@
     "DELETE_PATENTE_TITLE":"Elimina Patente",
     "DELETE_PATENTE_MESSAGE":"Sei sicuro di voler eliminare la patente ?",
     "DELETE_MEMBRO_TITLE":"Elimina Membro",
-    "DELETE_MEMBRO_MSG": "Sei sicuro di voler eliminare il membro selezionato ?"
+    "DELETE_MEMBRO_MSG": "Sei sicuro di voler eliminare il membro selezionato ?",
+    "CITTA":"Città",
+    "NOTE":"Note"
 
 }

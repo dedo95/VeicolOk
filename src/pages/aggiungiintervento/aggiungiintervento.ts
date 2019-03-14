@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Intervento} from "../../model/intervento.model";
+import {NgForm} from "@angular/forms";
+import {InterventoService} from "../../services/intervento.service";
+import {Veicolo} from "../../model/veicolo.model";
+import {ListainterventiPage} from "../listainterventi/listainterventi";
 
-/**
- * Generated class for the AggiungiinterventoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +14,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AggiungiinterventoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private intervento;
+  private exist:boolean=false;
+  private nuovoIntervento:Intervento=new Intervento();
+  private veicolo:Veicolo=new Veicolo();
+
+
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private interventoService:InterventoService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AggiungiinterventoPage');
+    this.intervento = this.navParams.get('intervento');
+    console.log(this.intervento);
+    if (this.intervento!==undefined) {
+      this.exist = true;
+    }
+    this.veicolo.targa=this.navParams.get('targa');
   }
+
+  creaIntervento(creaForm:NgForm){
+    this.nuovoIntervento.descrizione=creaForm.value.descrizione;
+    this.nuovoIntervento.importo=creaForm.value.importo;
+    this.nuovoIntervento.città=creaForm.value.citta;
+    this.nuovoIntervento.data=creaForm.value.scadenza;
+    this.nuovoIntervento.note=creaForm.value.note;
+    this.nuovoIntervento.veicolo=this.veicolo;
+    this.interventoService.creaIntervento(this.nuovoIntervento);
+    this.intervento=this.nuovoIntervento;
+    this.exist=true;
+    this.navCtrl.popTo(ListainterventiPage);
+  }
+
+  modificaIntervento(){
+    this.interventoService.updateIntervento(this.intervento);
+  }
+
 
 }

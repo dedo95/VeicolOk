@@ -11,8 +11,8 @@ export class PatenteService{
   constructor(public http: HttpClient){
   }
 
-  getPatente(): Observable<any> {
-    return this.http.get(URL.URL_PATENTE);
+  getPatente(): Observable<Patente> {
+    return this.http.get<Patente>(URL.URL_PATENTE);
   }
 
 
@@ -24,13 +24,13 @@ export class PatenteService{
   }
 
   deletePatente(patente:Patente){
-    console.log(this.http.post(URL.URL_DELETE_PATENTE,patente).toPromise());
+    this.http.post<Patente>(URL.URL_DELETE_PATENTE,patente).toPromise();
   }
 
   creaPatente(patente:Patente){
-    return this.http.post(URL.URL_CREA_PATENTE,patente).toPromise()
-      .then((response: Response) => {
-        return response.json();
+    return this.http.post<Patente>(URL.URL_CREA_PATENTE,patente).toPromise()
+      .then((response: Patente) => {
+        return response;
       }).catch(error => { console.error() }
       );
   }

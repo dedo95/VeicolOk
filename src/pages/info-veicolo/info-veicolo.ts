@@ -6,13 +6,9 @@ import {Transfer} from "@ionic-native/transfer";
 import { File } from '@ionic-native/file/ngx';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from "@angular/common/http";
-import {UtenteService} from "../../services/utente.service";
 import {VeicoloService} from "../../services/veicolo.service";
-import {NgForm} from "@angular/forms";
 import {Utente} from "../../model/utente.model";
 import {Veicolo} from "../../model/veicolo.model";
-import {ContattaciPage} from "../contattaci/contattaci";
-import {ChiSiamoPage} from "../chi-siamo/chi-siamo";
 import {ScadenzaPage} from "../scadenza/scadenza";
 import { ListainterventiPage } from '../listainterventi/listainterventi';
 
@@ -98,9 +94,9 @@ export class InfoVeicoloPage {
 
   public takePicture(sourceType) {
     var options = {
-      quality: 50,
-      targetWidth: 45,
-      targetHeight: 45,
+      quality: 100,
+      targetWidth: 200,
+      targetHeight: 150,
       sourceType: sourceType,
       saveToPhotoAlbum: true,
       correctOrientation: true,
@@ -127,7 +123,7 @@ export class InfoVeicoloPage {
   }
 
   openInterventi(){
-    this.navCtrl.push(ListainterventiPage);
+    this.navCtrl.push(ListainterventiPage,this.targa);
   }
 
 }

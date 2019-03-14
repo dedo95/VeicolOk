@@ -12,7 +12,7 @@ export class ScadenzaService {
   constructor(public http: HttpClient) {
   }
 
-  getScadenza(targa:string, title:string):Observable<any>{
+  getScadenza(targa:string, title:string):Observable<Scadenza>{
     console.log(title);
     let body={"targa": targa, "title" :title};
     return this.http.post<Scadenza>(URL.URL_SCADENZA,body,{ observe: 'response' })
@@ -36,9 +36,9 @@ export class ScadenzaService {
   }
 
   eliminaScadenza(scadenza: Scadenza){
-    return this.http.post(URL.URL_ELIMINA_SCADENZA,scadenza).toPromise()
-      .then((response:Response)=>{
-        return response.json();
+    return this.http.post<Scadenza>(URL.URL_ELIMINA_SCADENZA,scadenza).toPromise()
+      .then((response:Scadenza)=>{
+        return response;
       }).catch(error=>{ console.log(error)});
   }
 }

@@ -1,10 +1,9 @@
-import {Component, SystemJsNgModuleLoader} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Scadenza} from "../../model/scadenza.model";
 import {ScadenzaService} from "../../services/scadenza.service";
 import {NgForm} from "@angular/forms";
 import {Veicolo} from "../../model/veicolo.model";
-import {LoginPage} from "../login/login";
 import {TranslateService} from "@ngx-translate/core";
 
 
@@ -40,7 +39,7 @@ export class ScadenzaPage {
     this.veicolo.targa=this.navParams.get('targa');
     this.scadenzaService.getScadenza(this.navParams.get('targa'),this.navParams.get('scadenza')).subscribe(nuovascadenza=>{
       if (nuovascadenza!==null) {
-        this.scadenze = nuovascadenza.valueOf();
+        this.scadenze = nuovascadenza;
         console.log(this.scadenze);
         this.s = nuovascadenza;
         console.log(this.s);
