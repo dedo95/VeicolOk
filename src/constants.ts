@@ -29,6 +29,7 @@ export const URL = {
     URL_GET_INTERVENTI:API+'/getInterventi',
     URL_CREA_INTERVENTO:API+'/creaIntervento',
     URL_DELETE_INTERVENTO:API+'/deleteIntervento',
+    URL_UPDATE_INTERVENTO:API+'/updateIntervento',
     //per cellulare
     URLL: 'http://192.168.1.9:8080/vok/getUtente',
     URI: 'http://192.168.1.9:8080/vok/creaUtente',

@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {Platform, MenuController, Nav, Events, AlertController, NavController} from 'ionic-angular';
+import {Platform, MenuController, Nav, Events, AlertController} from 'ionic-angular';
 import { LinguaService,Lingua } from '../services/lingua.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
-import { UTENTE_STORAGE } from '../constants';
+
 
 
 //Pages
@@ -25,8 +25,7 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  linguaPreferita: string;
-  lingue: Array<Lingua>;
+
   rootPage: any ;
   pages: Array<{ title: string, component: any, icon: string }>;
   @ViewChild(Nav) nav: Nav;

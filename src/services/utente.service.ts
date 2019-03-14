@@ -6,6 +6,8 @@ import { Utente } from '../model/utente.model';
 import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
 import { Storage } from '@ionic/storage';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import {Veicolo} from "../model/veicolo.model";
+import {V} from "@angular/core/src/render3";
 
 
 @Injectable()
@@ -19,14 +21,14 @@ export class UtenteService {
       });
     }
 
-    getVeicoli(): Observable<any> {
-        return this.http.get(URL.URL_VEICOLI);
+    getVeicoli(): Observable<Array<Veicolo>> {
+        return this.http.get<Array<Veicolo>>(URL.URL_VEICOLI);
     }
 
     create(user: Utente) {
-        return this.http.post(URL.API_USE, user).toPromise()
-            .then((response: Response) => {
-                return response.json();
+        return this.http.post<Utente>(URL.API_USE, user).toPromise()
+            .then((response: Utente) => {
+                return response;
             }).catch(error => { console.error() }
             );
     }
@@ -49,11 +51,6 @@ export class UtenteService {
           return response;
       }).catch(error=> {console.log(error)});
   }
-
-    stamp() {
-        this.storage.get(UTENTE_STORAGE).then((val) => {
-        });
-    }
 
     logout() {
       this.tokenUtente = "";

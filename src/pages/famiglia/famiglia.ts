@@ -26,7 +26,7 @@ export class FamigliaPage {
   private deleteTitle:string;
   private deleteMessage:string;
   private userImg:boolean;
-  private famigliariImg:Array<boolean>;
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,

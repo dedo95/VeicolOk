@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, ItemSliding, NavController, NavParams, Refresher, ViewController} from 'ionic-angular';
+import {AlertController, ItemSliding, NavController, NavParams, Refresher} from 'ionic-angular';
 import { AggiungiveicoloPage } from '../aggiungiveicolo/aggiungiveicolo';
 import { InfoVeicoloPage } from '../info-veicolo/info-veicolo';
 import { UtenteService } from '../../services/utente.service';

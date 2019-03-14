@@ -37,6 +37,12 @@
           </ion-item>
         </ion-list>
       </ion-card>
+
+      <div text-center >
+        <button ion-button class="login_button" default (click)="modificaIntervento(salvaForm)" [disabled]="!salvaForm.form.valid" >
+          {{'SAVE_BUTTON'|translate}}
+        </button>
+      </div>
     </form>
 
   <form #creaForm="ngForm"  novalidate *ngIf="!exist">

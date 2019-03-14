@@ -33,7 +33,7 @@ export class ListainterventiPage {
     console.log('ionViewDidLoad ListainterventiPage');
     this.targa=this.navParams.data;
     this.interventiService.getInterventi(this.targa).subscribe((data)=>{
-        this.interventi = data.valueOf();
+        this.interventi = data;
         if (this.interventi.length!==0){
           this.exist=true;
         }

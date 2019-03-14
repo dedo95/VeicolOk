@@ -14,22 +14,21 @@ export class VeicoloService {
     }
 
     create(veicolo: Veicolo) {
-        console.log("Inizio creazione veicolo");
         this.utenteService.getUtente().subscribe((utente)=>{
           utente.img=null;
           veicolo.utente=utente;
-          return this.http.post(URL.URL_VEICOLO, veicolo).toPromise()
-            .then((response: Response) => {
-              return response.json();
+          return this.http.post<Veicolo>(URL.URL_VEICOLO, veicolo).toPromise()
+            .then((response: Veicolo) => {
+              return response;
             }).catch(error => { console.error() }
             );
         });
     }
 
     delete(veicolo: Veicolo){
-        return this.http.post(URL.URL_DELETE, veicolo).toPromise()
-          .then((response: Response) => {
-            return response.json();
+        return this.http.post<Veicolo>(URL.URL_DELETE, veicolo).toPromise()
+          .then((response: Veicolo) => {
+            return response;
           }).catch(error => { console.error() }
           );
     }

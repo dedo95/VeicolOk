@@ -39,7 +39,7 @@ export class ScadenzaPage {
     this.veicolo.targa=this.navParams.get('targa');
     this.scadenzaService.getScadenza(this.navParams.get('targa'),this.navParams.get('scadenza')).subscribe(nuovascadenza=>{
       if (nuovascadenza!==null) {
-        this.scadenze = nuovascadenza.valueOf();
+        this.scadenze = nuovascadenza;
         console.log(this.scadenze);
         this.s = nuovascadenza;
         console.log(this.s);

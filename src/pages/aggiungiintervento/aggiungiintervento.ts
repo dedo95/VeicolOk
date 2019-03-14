@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Intervento} from "../../model/intervento.model";
 import {NgForm} from "@angular/forms";
 import {InterventoService} from "../../services/intervento.service";
 import {Veicolo} from "../../model/veicolo.model";
-import {Scadenza} from "../../model/scadenza.model";
-import {TranslateService} from "@ngx-translate/core";
+import {ListainterventiPage} from "../listainterventi/listainterventi";
 
 
 @IonicPage()
@@ -47,6 +46,11 @@ export class AggiungiinterventoPage {
     this.interventoService.creaIntervento(this.nuovoIntervento);
     this.intervento=this.nuovoIntervento;
     this.exist=true;
+    this.navCtrl.popTo(ListainterventiPage);
+  }
+
+  modificaIntervento(){
+    this.interventoService.updateIntervento(this.intervento);
   }
 
 

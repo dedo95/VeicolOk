@@ -35,7 +35,7 @@ export class PatentePage {
     console.log('ionViewDidLoad PatentePage');
     this.patenteService.getPatente().subscribe(patente=>{
       if(patente!==null){
-        this.patente=patente.valueOf();
+        this.patente=patente;
         this.exist=true;
         this.p=patente;
       }else{
