@@ -55,7 +55,6 @@ export class ListainterventiPage {
       if (this.interventi.length!==0){
         this.exist=true;
       }
-      console.log(this.exist);
     });
   }
 

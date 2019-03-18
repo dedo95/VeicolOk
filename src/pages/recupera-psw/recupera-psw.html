@@ -1,17 +1,23 @@
 <ion-header>
   <ion-toolbar text-center>
     <ion-navbar>
-      <ion-title>Recupera Password</ion-title>
+      <ion-title>{{'RECUPERA_PSW_TITLE'|translate}}</ion-title>
     </ion-navbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-item>
-    <ion-icon name="md-mail" item-start></ion-icon>
-    <ion-input placeholder="Email" type="email"></ion-input>
-  </ion-item>
-  <button ion-button full class="login_button">Invia</button>
-
+  <form #recuperaForm="ngForm" >
+    <ion-item>
+      <ion-icon name="md-mail" item-start></ion-icon>
+      <ion-input placeholder="Email" type="email" required name="email" [(ngModel)]="email_account" #email=""ngModel></ion-input>
+    </ion-item>
+    <div text-center>
+      <button ion-button   (click)="recupra_password()" [disabled]="!recuperaForm.form.valid">
+        {{'SEND_BUTTON'|translate}}
+        <ion-icon name="ios-send"></ion-icon>
+      </button>
+    </div>
+  </form>
 </ion-content>

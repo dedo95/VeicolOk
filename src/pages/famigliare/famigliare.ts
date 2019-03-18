@@ -23,7 +23,7 @@ export class FamigliarePage {
     console.log('ionViewDidLoad FamigliarePage');
     this.membro=this.navParams.data;
     if (this.membro.img.length===0){
-      this.membro.img = "../../assets/imgs/default.png";
+      this.membro.img = "../../assets/imgs/user.png";
     }
   }
 

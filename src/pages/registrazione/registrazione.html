@@ -19,7 +19,7 @@
 
     <ion-item>
       <ion-label>{{'DATA_NASCITA'|translate}}</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="user.d_nascita" name="nascita" required #d_nascita="ngModel"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="user.d_nascita" name="nascita" required #d_nascita="ngModel" min="1940" ></ion-datetime>
     </ion-item>
 
     <ion-item>

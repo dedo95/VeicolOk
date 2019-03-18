@@ -25,8 +25,7 @@ export class AggiungiveicoloPage {
   creaVeicolo(veicoloForm: NgForm) {
     this.veicolo.targa = veicoloForm.value.targa;
     this.veicolo.alimentazione = veicoloForm.value.alimentazione;
-    let date=new Date(veicoloForm.value.anno_immatricolazione);
-    this.veicolo.anno_immatricolazione = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+    this.veicolo.anno_immatricolazione = veicoloForm.value.anno_immatricolazione;
     this.veicolo.cavalli = veicoloForm.value.cavalli;
     this.veicolo.cilindrata = veicoloForm.value.cilindrata;
     this.veicolo.colore = veicoloForm.value.colore;

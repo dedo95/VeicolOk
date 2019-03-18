@@ -14,7 +14,7 @@
   <ion-list>
     <ion-item>
       <ion-icon name="ios-person" item-start></ion-icon>
-      <ion-input placeholder="Name"></ion-input>
+      <ion-input placeholder="{{'Nome'|translate}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="md-mail" item-start></ion-icon>
@@ -28,7 +28,8 @@
   </ion-card>
 
   <ion-item class="center_button">
-    <button ion-button class="login_button"icon-end>{{'SEND_BUTTON'|translate}}
+    <button ion-button class="login_button" icon-end (click)="contattaci()">
+      {{'SEND_BUTTON'|translate}}
         <ion-icon name="ios-send"></ion-icon>
     </button>
   </ion-item>

@@ -5,7 +5,6 @@ import { TranslateService} from "@ngx-translate/core";
 
 import {UtenteService} from "../../services/utente.service";
 import {LoginPage} from "../login/login";
-
 import {Utente} from "../../model/utente.model";
 
 
@@ -40,8 +39,7 @@ export class RegistrazionePage {
   onLogin(loginForm: NgForm){
     this.user.nome=loginForm.value.nome;
     this.user.cognome=loginForm.value.cognome;
-    let date=new Date(loginForm.value.nascita);
-    this.user.d_nascita=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+    this.user.d_nascita=loginForm.value.nascita;
     this.user.email=loginForm.value.email;
     this.user.password=loginForm.value.password;
     this.utenteService.create(this.user);

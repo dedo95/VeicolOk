@@ -26,62 +26,67 @@
 
   <ion-card>
     <form #veicoloForm="ngForm" >
-      <ion-list no-lines>
-        <ion-item>
+      <ion-grid no-lines>
+        <ion-row>
           <ion-label color="black">{{'DESCRIZIONE'|translate}} : </ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="descrizione" required [(ngModel)]="veicolo.descrizione" #descrizione="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label color="black">{{'TARGA'|translate}} : </ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
-          <ion-label>{{'TIPOLOGIA'|translate}} : </ion-label>
+        <ion-row>
+          <ion-label>{{'TIPOLOGIA'|translate}} :</ion-label>
           <ion-select [(ngModel)]="veicolo.tipologia" #tipologia="ngModel" required name="tipologia" value="tipologia==veicolo.tipologia">
             <ion-option value="Auto" >Auto</ion-option>
             <ion-option value="Moto">Moto</ion-option>
             <ion-option value="Trattore">Trattore</ion-option>
             <ion-option value="Camion">Camion</ion-option>
           </ion-select>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label>
             {{'INTESTATARIO'|translate}}
           </ion-label>
           <ion-label>
              <b>{{utente.nome+' '+ utente.cognome}}</b>
           </ion-label>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label color="black">{{'ANNO'|translate}}: </ion-label>
           <ion-input color="black" style="font-weight:bold;" name="anno_immatricolazione" required [(ngModel)]="veicolo.anno_immatricolazione" #anno_immatricolazione="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label color="black">{{'COLORE'|translate}} :</ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="colore" required [(ngModel)]="veicolo.colore" #colore="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label color="black">{{'CAVALLI'|translate}} :</ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel" type="text"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label color="black">{{'CILINDRATA'|translate}} :  </ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
+          <ion-label color="black">{{'ALIMENTAZIONE'|translate}} :  </ion-label>
+          <ion-input color="black"  style="font-weight:bold;" name="alimentazione" required [(ngModel)]="veicolo.alimentazione" #alimentazione="ngModel"></ion-input>
+        </ion-row>
+
+        <ion-row>
           <ion-label color="black">Kilowatt : </ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-      </ion-list>
+      </ion-grid>
     </form>
   </ion-card>
 

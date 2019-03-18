@@ -42,8 +42,7 @@ export class InterventoPage {
     this.nuovoIntervento.descrizione=creaForm.value.descrizione;
     this.nuovoIntervento.importo=creaForm.value.importo;
     this.nuovoIntervento.città=creaForm.value.citta;
-    let date=new Date(creaForm.value.scadenza);
-    this.nuovoIntervento.data=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+    this.nuovoIntervento.data=creaForm.value.scadenza;
     this.nuovoIntervento.note=creaForm.value.note;
     this.nuovoIntervento.veicolo=this.veicolo;
     this.interventoService.creaIntervento(this.nuovoIntervento);

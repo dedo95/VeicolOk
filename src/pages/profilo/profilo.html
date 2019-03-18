@@ -28,26 +28,28 @@
     </ion-item>
 
     <form #profileForm="ngForm"  >
-      <ion-list no-lines padding>
-        <ion-item>
+      <ion-grid no-lines padding>
+        <ion-row>
           <ion-label style="color:black">{{'Cognome'|translate}}: </ion-label>
           <ion-input color="black"  style="font-weight:bold;" name="cognome" required [(ngModel)]="utente.cognome" #cognome="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label style="color:black">{{'Nome'|translate}} : </ion-label>
           <ion-input color="black" style="font-weight:bold;"  name="nome" [(ngModel)]="utente.nome" #nome="ngModel" required> </ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
+        <ion-row>
           <ion-label style="color:black">{{'DATA_NASCITA'|translate}} </ion-label>
           <ion-input  color="black"  style="font-weight:bold;" name="nascita" required [(ngModel)]="utente.d_nascita" #d_nascita="ngModel"> </ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item>
-          <ion-label style="color:black">Email: <b>{{utente.email}}</b></ion-label>
-        </ion-item>
-      </ion-list>
+        <ion-row>
+          <ion-label style="color:black">Email: </ion-label>
+          <ion-label><b>{{utente.email}}</b></ion-label>
+
+        </ion-row>
+      </ion-grid>
     </form>
   </ion-card>
 

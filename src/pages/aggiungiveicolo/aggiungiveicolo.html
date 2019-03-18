@@ -5,43 +5,43 @@
 </ion-header>
 
 <ion-content padding>
-
+<ion-card>
   <form #veicoloForm="ngForm" novalidate (ngSubmit)="creaVeicolo(veicoloForm)">
     <ion-item>
-      <ion-input placeholder="Targa" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel" type="text"></ion-input>
+      <ion-input placeholder="{{'TARGA'|translate}}" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Alimentazione" name="alimentazione" required [(ngModel)]="veicolo.alimentazione" #alimentazione="ngModel"></ion-input>
+      <ion-input placeholder="{{'ALIMENTAZIONE'|translate}}" name="alimentazione" required [(ngModel)]="veicolo.alimentazione" #alimentazione="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Anno Immatricolazione</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="veicolo.anno_immatricolazione" name="anno_immatricolazione" required #anno_immatricolazione="ngModel"></ion-datetime>
+      <ion-label> {{'ANNO'|translate}}</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="veicolo.anno_immatricolazione" name="anno_immatricolazione" required #anno_immatricolazione="ngModel" ></ion-datetime>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Cavalli" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel" type="number"></ion-input>
+      <ion-input placeholder="{{'CAVALLI'|translate}}" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Cilindrata" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel" type="number"></ion-input>
+      <ion-input placeholder="{{'CILINDRATA'|translate}}" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Colore" name="colore" required [(ngModel)]="veicolo.colore" #colore="ngModel"></ion-input>
+      <ion-input placeholder="{{'COLORE'|translate}}" name="colore" required [(ngModel)]="veicolo.colore" #colore="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Descrizione" name="descrizione" required [(ngModel)]="veicolo.descrizione" #descrizione="ngModel"></ion-input>
+      <ion-input placeholder="{{'DESCRIZIONE'|translate}}" name="descrizione" required [(ngModel)]="veicolo.descrizione" #descrizione="ngModel"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Kilowatt" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel" type="number"></ion-input>
+      <ion-input placeholder="Kilowatt" name="kw"  [(ngModel)]="veicolo.kw" #kw="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-     <ion-label>Tipologia</ion-label>
+     <ion-label>{{'TIPOLOGIA'|translate}}</ion-label>
         <ion-select [(ngModel)]="veicolo.tipologia" #tipologia="ngModel" required name="tipologia">
           <ion-option value="Auto">Auto</ion-option>
           <ion-option value="Moto">Moto</ion-option>
@@ -49,9 +49,14 @@
           <ion-option value="Camion">Camion</ion-option>
         </ion-select>
     </ion-item>
-    <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Crea Veicolo </button>
+    <div text-center>
+      <button ion-button  icon-end type="submit" [disabled]="!veicoloForm.form.valid">
+        {{ 'CREA_VEICOLO'|translate }}
+        <ion-icon name="ios-car"></ion-icon>
+      </button>
+    </div>
   </form>
-
+</ion-card>
 </ion-content>
 
 

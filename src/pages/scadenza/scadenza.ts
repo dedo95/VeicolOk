@@ -21,10 +21,13 @@ export class ScadenzaPage {
   private s:Scadenza=new Scadenza();
   private veicolo:Veicolo=new Veicolo();
   title:string='';
+  tipo:string;
   private deleteButton: string;
   private cancelButton: string;
   private deleteTitle:string;
   private deleteMessage:string;
+  private creazione_title:string;
+  private creazione_msg:string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -53,19 +56,15 @@ export class ScadenzaPage {
     this.scadenzaService.updateScadenza(this.scadenze).subscribe((nuovaScadenza:Scadenza)=>{
       this.scadenze=nuovaScadenza;
     });
-    console.log(this.scadenze);
-    this.modificaOk();
   }
 
   crea(creaForm:NgForm){
     this.scadenze.descrizione_scadenza=this.title;
     this.scadenze.importo=creaForm.value.importo;
-    let date=new Date(creaForm.value.data);
-    this.scadenze.data=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+    this.scadenze.data=creaForm.value.data
     this.scadenze.veicolo=this.veicolo;
     this.scadenzaService.creaScadenza(this.scadenze).subscribe((nuovaScadenza:Scadenza)=>{
       this.s=nuovaScadenza;
-      console.log(this.s);
     });
     this.isempty=true;
     this.creazioneOk();
@@ -109,18 +108,19 @@ export class ScadenzaPage {
   }
 
   creazioneOk(){
-    let alert = this.alertCtrl.create({
-      title: 'Creazione avvenuta con successo',
-      subTitle: this.title+' salvata con successo',
-      buttons: ['OK']
+    this.translateservice.get("SCADENZA_MSG_TITLE").subscribe((data:string)=>{
+      this.creazione_title=data;
     });
-    alert.present();
-  }
-
-  modificaOk(){
+    this.translateservice.get("SCADENZA_MSG").subscribe((data:string)=>{
+      this.creazione_msg=data;
+    });
+    this.translateservice.get(this.title).subscribe((data:string)=>{
+      this.tipo=data;
+    });
+    this.tipo=this.tipo+' '+this.creazione_msg;
     let alert = this.alertCtrl.create({
-      title: 'Modifica Effettuata',
-      subTitle: this.title+' è stata modificata con successo',
+      title: this.creazione_title,
+      subTitle: this.tipo,
       buttons: ['OK']
     });
     alert.present();

@@ -10,6 +10,6 @@
       <ion-icon name="md-person" item-start></ion-icon>
       <ion-input placeholder="Email" name="email" required [(ngModel)]="email" #member_email="ngModel" type="email"></ion-input>
     </ion-item>
-    <button ion-button full class="login_button" type="submit"> {{'Agg' | translate}} </button>
+    <button ion-button full class="login_button" type="submit" [disabled]="!aggiungiMembro.form.valid"> {{'Agg' | translate}} </button>
   </form>
 </ion-content>

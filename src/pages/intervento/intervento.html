@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Aggiungi Intervento</ion-title>
+    <ion-title>{{'AGG_INT'|translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,31 +8,32 @@
 
   <form #salvaForm="ngForm"  novalidate *ngIf="exist">
     <ion-card>
-      <ion-list >
-        <ion-item >
-          <ion-label>{{'DESCRIZIONE'|translate}} : <b>{{intervento.descrizione_manutenzione}}</b></ion-label>
-        </ion-item>
+      <ion-grid >
+        <ion-row >
+          <ion-label>{{'DESCRIZIONE'|translate}} : </ion-label>
+          <ion-label><b>{{intervento.descrizione_manutenzione}}</b></ion-label>
+        </ion-row>
 
-        <ion-item >
+        <ion-row >
           <ion-label>{{'IMPORTO'|translate}} € :</ion-label>
           <ion-input color="black"  style="font-weight:bold;" required name="importo" [(ngModel)]="intervento.importo" #importo="ngModel" type="number"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item >
+        <ion-row >
           <ion-label>{{'DATA'|translate}} :</ion-label>
           <ion-input color="black"  style="font-weight:bold;"  required name="scadenza" [(ngModel)]="intervento.data" #scadenza="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item >
+        <ion-row>
           <ion-label>{{'CITTA'|translate}} :</ion-label>
           <ion-input color="black"  style="font-weight:bold;"  required name="citta" [(ngModel)]="intervento.citta" #citta="ngModel"></ion-input>
-        </ion-item>
+        </ion-row>
 
-        <ion-item >
+        <ion-row>
           <ion-label>{{'NOTE'|translate}} :</ion-label>
           <ion-textarea required name="note" [(ngModel)]="intervento.note" #note="ngModel" class="my_text_area"></ion-textarea>
-        </ion-item>
-      </ion-list>
+        </ion-row>
+      </ion-grid>
     </ion-card>
 
     <div text-center >
@@ -46,28 +47,23 @@
     <ion-card>
       <ion-list >
         <ion-item >
-          <ion-label>{{'DESCRIZIONE'|translate}} : </ion-label>
-          <ion-input color="black"  style="font-weight:bold;" required name="descrizione" [(ngModel)]="nuovoIntervento.descrizione_manutenzione" #descrizione="ngModel"></ion-input>
+          <ion-input placeholder="{{'DESCRIZIONE'|translate}}" color="black"  style="font-weight:bold;" required name="descrizione" [(ngModel)]="nuovoIntervento.descrizione_manutenzione" #descrizione="ngModel"></ion-input>
         </ion-item>
 
-        <ion-item >
-          <ion-label>{{'IMPORTO'|translate}} € :</ion-label>
-          <ion-input color="black"  style="font-weight:bold;" required name="importo" [(ngModel)]="nuovoIntervento.importo" #importo="ngModel" type="number"></ion-input>
+        <ion-item>
+          <ion-input placeholder="{{'IMPORTO'|translate}} €" color="black"  style="font-weight:bold;" required name="importo" [(ngModel)]="nuovoIntervento.importo" #importo="ngModel" type="number"></ion-input>
         </ion-item>
 
-        <ion-item >
-          <ion-label>{{'DATA'|translate}} :</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" required name="scadenza" [(ngModel)]="nuovoIntervento.data" #scadenza="ngModel"></ion-datetime>
+        <ion-item>
+          <ion-datetime placeholder="{{'DATA'|translate}} " displayFormat="DD/MM/YYYY" required name="scadenza" [(ngModel)]="nuovoIntervento.data" #scadenza="ngModel" max="2025"></ion-datetime>
         </ion-item>
 
-        <ion-item >
-          <ion-label>{{'CITTA'|translate}} :</ion-label>
-          <ion-input color="black"  style="font-weight:bold;"  required  name="citta" [(ngModel)]="nuovoIntervento.citta" #citta="ngModel"></ion-input>
+        <ion-item>
+          <ion-input placeholder="{{'CITTA'|translate}} " color="black"  style="font-weight:bold;"  required  name="citta" [(ngModel)]="nuovoIntervento.citta" #citta="ngModel"></ion-input>
         </ion-item>
 
-        <ion-item >
-          <ion-label>{{'NOTE'|translate}} :</ion-label>
-          <ion-textarea required name="note" [(ngModel)]="nuovoIntervento.note" #note="ngModel" class="my_text_area"></ion-textarea>
+        <ion-item>
+          <ion-textarea placeholder="{{'NOTE'|translate}}"  name="note" [(ngModel)]="nuovoIntervento.note" #note="ngModel" class="my_text_area"></ion-textarea>
         </ion-item>
       </ion-list>
     </ion-card>

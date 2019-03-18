@@ -97,7 +97,6 @@ export class PatentePage {
     this.patente=new Patente();
     this.patenteService.getPatente().subscribe(nuovaPatente=>{
       this.patente=nuovaPatente;
-      console.log(this.patente);
       if(this.patente==null){
         this.exist=false;
       }else {
@@ -171,7 +170,6 @@ export class PatentePage {
             this.p.categoria=data.categoria;
             this.p.scadenza=data.scadenza;
             this.p.punti=data.punti;
-            console.log("this.p "+this.p);
             this.patenteService.creaPatente(this.p);
             this.patente=this.p;
             this.exist=true;

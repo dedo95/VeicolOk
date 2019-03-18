@@ -17,6 +17,7 @@
     "Aggiungi": "Add a Member",
     "Agg": "Add",
     "Agg_car": "Add Vehicles",
+    "AGG_INT": "Add Intervention",
     "Info_v": "Vehicle Information",
     "Home":"Vehicles",
     "NO_VEICOLO":"No Vehicles",
@@ -49,9 +50,11 @@
     "GRIGIO": "GREY",
     "CAVALLI": "Horses",
     "CILINDRATA": "Displacement",
+    "ALIMENTAZIONE": "Feed",
     "TIPOLOGIA": "Typology",
     "DELETE_BUTTON": "Delete",
     "SAVE_BUTTON": "Save",
+    "CREA_VEICOLO": "Creates Vehicle",
     "CANCEL_BUTTON": "Cancel",
     "DELETE_VEICOLO_TITLE":"Delete Veicle",
     "DELETE_VEICOLO_MESSAGE": "Do you want to delete the vehicle?",
@@ -84,5 +87,11 @@
     "CITTA": "City",
     "NOTE": "Notes",
     "NO_INT": "No Intervention",
-    "DATA":"Date"
+    "DATA":"Date",
+    "SCADENZA_MSG_TITLE":"Creation Succeeded",
+    "SCADENZA_MSG":"saved successfully",
+    "CONTATTACI_TITLE":"Message Sent",
+    "CONTATTACI_MSG":"Thanks for contacting us",
+    "RECUPERA_PSW_TITLE":"Recover Password",
+    "RECUPERA_PSW_MSG":"We sent you an email with the password recovery procedure"
 }
