@@ -16,51 +16,56 @@
 
 
 <ion-content padding style="text-align: center;">
-
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card>
-  <button ion-button icon-only *ngIf="exist" (click)="presentAlertPrompt()">
-    {{'Crea Famiglia' | translate}}
-    <ion-icon name="ios-person-add-outline"></ion-icon>
-  </button>
-  <ion-list *ngIf="!exist" no-lines>
-    <ion-item no-lines >
-      <ion-title color="black" align="center" >{{'Famiglia'|translate}}  <b>{{famiglia.nome.toUpperCase()}} </b>  </ion-title>
-    </ion-item>
+  <ion-card *ngIf="exist">
+    <div text-center>
+      <ion-title>{{'NO_FAM'|translate}}</ion-title>
+      <button ion-button icon-only  (click)="presentAlertPrompt()">
+        {{'Crea Famiglia' | translate}}
+        <ion-icon name="ios-people-outline"></ion-icon>
+      </button>
+    </div>
+  </ion-card>
 
-    <ion-item>
-      <ion-avatar (click)="modifica()" >
-        <img src="../../assets/imgs/family.png" style="width: 150px;height: 150px;margin:auto;" >
-      </ion-avatar>
-    </ion-item>
+  <ion-card *ngIf="!exist">
+    <ion-list  no-lines>
+      <ion-item no-lines >
+        <ion-title color="black" align="center" >{{'Famiglia'|translate}}  <b>{{famiglia.nome.toUpperCase()}} </b>  </ion-title>
+      </ion-item>
 
-    <ion-item (click)="openProfilo()">
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/default.png" *ngIf="!userImg">
-        <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)" *ngIf="userImg">
-      </ion-avatar>
-      <b>{{utente.nome+' '+utente.cognome}}</b>(Io)
-    </ion-item>
+      <ion-item>
+        <ion-avatar (click)="modifica()" >
+          <img src="../../assets/imgs/family.png" style="width: 150px;height: 150px;margin:auto;" >
+        </ion-avatar>
+      </ion-item>
 
-    <ion-list *ngFor="let famigliare of users">
-      <ion-item-sliding #sliding >
-        <ion-item (click)="openDetail(famigliare)">
-          <ion-avatar item-start>
-            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(famigliare.img)" *ngIf="famigliare.img.length!==0">
-            <img src="../../assets/imgs/default.png" *ngIf="famigliare.img.length===0">
-          </ion-avatar>
-          <b>{{famigliare.nome+' '+famigliare.cognome}}</b>
-        </ion-item>
-        <ion-item-options side="right" (click)="delete(famigliare,sliding)">
-          <button ion-button color="primary" >
-            <ion-icon name="trash"></ion-icon> {{'DELETE_BUTTON'|translate}}
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
+      <ion-item (click)="openProfilo()">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/user.png" *ngIf="!userImg">
+          <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)" *ngIf="userImg">
+        </ion-avatar>
+        <b>{{utente.nome+' '+utente.cognome}}</b>(Io)
+      </ion-item>
+
+      <ion-list *ngFor="let famigliare of users">
+        <ion-item-sliding #sliding >
+          <ion-item (click)="openDetail(famigliare)">
+            <ion-avatar item-start>
+              <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(famigliare.img)" *ngIf="famigliare.img.length!==0">
+              <img src="../../assets/imgs/user.png" *ngIf="famigliare.img.length===0">
+            </ion-avatar>
+            <b>{{famigliare.nome+' '+famigliare.cognome}}</b>
+          </ion-item>
+          <ion-item-options side="right" (click)="delete(famigliare,sliding)">
+            <button ion-button color="primary" >
+              <ion-icon name="trash"></ion-icon> {{'DELETE_BUTTON'|translate}}
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
     </ion-list>
-  </ion-list>
   </ion-card>
 </ion-content>

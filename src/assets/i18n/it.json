@@ -5,6 +5,8 @@
     "Famigliare": "Famigliare",
     "Famiglia": "Famiglia",
     "PSD_NO": "Password dimenticata?",
+    "PASSWORD_REQUIRED":"Password Richiesta",
+    "USERNAME_REQUIRED": "Username Richiesto",
     "REGISTRATI": "Registrati",
     "Obj": "Oggetto",
     "Msg": "Messaggio",
@@ -17,6 +19,7 @@
     "Agg_car": "Aggiungi Veicolo",
     "Info_v" : "Informazioni Veicolo",
     "Home": "Veicoli",
+    "NO_VEICOLO":"Nessun Veicolo",
     "LINGUA": "Lingua",
     "ITALIANO": "Italiano",
     "INGLESE": "Inglese",
@@ -26,7 +29,9 @@
     "Nome": "Nome",
     "Cognome": "Cognome",
     "Crea Famiglia": "Crea Famiglia",
+    "NO_FAM":"Nessuna Famiglia",
     "Crea Patente": "Crea Patente",
+    "NO_PATENTE":"Nessuna Patente",
     "LOGIN_ERROR_SUB_TITLE": "Username e/o password errate!",
     "LOGIN_TITLE": "Login",
     "LOGIN_ERROR_TITLE": "Errore Login",
@@ -48,6 +53,7 @@
     "DELETE_BUTTON": "Elimina",
     "CANCEL_BUTTON": "Annulla",
     "SAVE_BUTTON": "Salva",
+    "CREA_VEICOLO": "Crea Veicolo",
     "DELETE_VEICOLO_TITLE": "Elimina Veicolo",
     "DELETE_VEICOLO_MESSAGE": "Vuoi eliminare il Veicolo?",
     "CREATE_BUTTON":"Crea",
@@ -76,6 +82,7 @@
     "DELETE_MEMBRO_TITLE":"Elimina Membro",
     "DELETE_MEMBRO_MSG": "Sei sicuro di voler eliminare il membro selezionato ?",
     "CITTA":"Città",
-    "NOTE":"Note"
+    "NOTE":"Note",
+    "NO_INT": "Nessun Intervento"
 
 }

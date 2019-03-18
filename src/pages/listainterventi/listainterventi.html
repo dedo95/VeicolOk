@@ -34,7 +34,7 @@
 
   <ion-card *ngIf="!exist" align-items-center>
     <div text-center>
-      <ion-title>Nessun Intervento</ion-title>
+      <ion-title>{{'NO_INT'|translate}}</ion-title>
       <button ion-button class="login_button" default  (click)="openIntervento()">
         {{'CREATE_BUTTON'|translate}}
       </button>

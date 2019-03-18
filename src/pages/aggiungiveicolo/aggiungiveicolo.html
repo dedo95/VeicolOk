@@ -10,16 +10,10 @@
     <ion-item>
       <ion-input placeholder="Targa" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel" type="text"></ion-input>
     </ion-item>
-    <div ion-text [hidden]="targa.valid || targa.pristine" color="danger" padding-left>
-      Codice richiesto
-    </div>
 
     <ion-item>
       <ion-input placeholder="Alimentazione" name="alimentazione" required [(ngModel)]="veicolo.alimentazione" #alimentazione="ngModel"></ion-input>
     </ion-item>
-    <div ion-text [hidden]="alimentazione.valid || alimentazione.pristine" color="danger" padding-left>
-      nome richiesto
-    </div>
 
     <ion-item>
       <ion-label>Anno Immatricolazione</ion-label>
@@ -27,11 +21,11 @@
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Cavalli" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel"></ion-input>
+      <ion-input placeholder="Cavalli" name="cavalli" required [(ngModel)]="veicolo.cavalli" #cavalli="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Cilindrata" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel"></ion-input>
+      <ion-input placeholder="Cilindrata" name="cilindrata" required [(ngModel)]="veicolo.cilindrata" #cilindrata="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -43,7 +37,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-input placeholder="Kilowatt" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel"></ion-input>
+      <ion-input placeholder="Kilowatt" name="kw" required [(ngModel)]="veicolo.kw" #kw="ngModel" type="number"></ion-input>
     </ion-item>
 
     <ion-item>

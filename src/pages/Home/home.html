@@ -19,20 +19,32 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list *ngFor="let veicolo of veicoli">
-    <ion-item-sliding #sliding >
-      <ion-item (click)="openDetail(veicolo)">
-        <ion-avatar item-start>
-          <img src="../../assets/imgs/default.png" *ngIf="veicolo.img.length===0">
-          <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(veicolo.img)" *ngIf="veicolo.img.length!==0">
-        </ion-avatar>
-        <ion-label>{{veicolo.descrizione}}</ion-label>
-      </ion-item>
-      <ion-item-options side="right" (click)="delete(veicolo, sliding)">
-        <button ion-button color="primary" >
-          <ion-icon name="trash"></ion-icon> {{'DELETE_BUTTON'|translate}}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <ion-card *ngIf="!exist">
+    <div text-center>
+      <ion-title>{{'NO_VEICOLO'|translate}}</ion-title>
+      <button ion-button icon-only  (click)="go_aggiungi_veicolo()">
+        {{'CREA_VEICOLO'|translate}}
+        <ion-icon name="ios-car"></ion-icon>
+      </button>
+    </div>
+  </ion-card>
+
+  <ion-card *ngIf="exist">
+    <ion-list *ngFor="let veicolo of veicoli">
+      <ion-item-sliding #sliding >
+        <ion-item (click)="openDetail(veicolo)">
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/default.png" *ngIf="veicolo.img.length===0">
+            <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(veicolo.img)" *ngIf="veicolo.img.length!==0">
+          </ion-avatar>
+          <ion-label>{{veicolo.descrizione}}</ion-label>
+        </ion-item>
+        <ion-item-options side="right" (click)="delete(veicolo, sliding)">
+          <button ion-button color="primary" >
+            <ion-icon name="trash"></ion-icon> {{'DELETE_BUTTON'|translate}}
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
 </ion-content>

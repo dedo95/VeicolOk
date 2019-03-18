@@ -20,6 +20,7 @@ export class HomePage {
   private cancelButton: string;
   private deleteTitle:string;
   private deleteMessage:string;
+  private exist:boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -76,6 +77,9 @@ export class HomePage {
             }
             veicolo.img=null;
             this.veicoloService.delete(veicolo);
+            if (this.veicoli.length===0){
+              this.exist=false;
+            }
           }
         },
         {
@@ -96,6 +100,9 @@ export class HomePage {
   listaVeicoli(){
     this.utenteService.getVeicoli().subscribe(veicolo =>{
       this.veicoli=veicolo;
+      if (this.veicoli.length!==0){
+        this.exist=true;
+      }
     });
   }
 

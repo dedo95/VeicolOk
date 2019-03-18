@@ -10,17 +10,23 @@
 </ion-header>
 
 <ion-content padding center text-center>
-  <form #loginform="ngForm" (ngSubmit)="login()" novalidate>
+  <form #loginform="ngForm" (ngSubmit)="login()" >
     <ion-list no-lines>
       <ion-item>
         <ion-icon name="md-mail" item-start></ion-icon>
-        <ion-input name="email" placeholder="Email" type="email" clearInput required [(ngModel)]="account.username"></ion-input>
+        <ion-input name="email" placeholder="Email" type="email" clearInput required [(ngModel)]="account.username" name="username" #username="ngModel"></ion-input>
       </ion-item>
+      <p ion-text [hidden]="username.valid" color="primary" padding-left>
+        {{ 'USERNAME_REQUIRED' | translate }}
+      </p>
     
       <ion-item>
         <ion-icon name="md-lock" item-start></ion-icon>
-        <ion-input placeholder="Password" type="password" name="password" clearInput [(ngModel)]="account.password"></ion-input>
+        <ion-input placeholder="Password" type="password" name="password" clearInput [(ngModel)]="account.password" #password="ngModel" required></ion-input>
       </ion-item>
+      <p ion-text [hidden]="password.valid" color="primary" padding-left>
+          {{ 'PASSWORD_REQUIRED' |translate}}
+      </p>
     </ion-list>
     <button ion-button full class="login_button">Login</button>
   </form>

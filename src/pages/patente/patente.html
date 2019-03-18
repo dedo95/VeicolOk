@@ -15,10 +15,16 @@
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <button ion-button icon-only *ngIf="!exist" (click)="presentAlertPrompt2()">
-    {{'Crea Patente' | translate}}
-    <ion-icon name="ios-card"></ion-icon>
-  </button>
+
+  <ion-card *ngIf="!exist">
+    <div text-center>
+      <ion-title>{{'NO_PATENTE'|translate}}</ion-title>
+      <button ion-button icon-only  (click)="presentAlertPrompt2()">
+        {{'Crea Patente' | translate}}
+        <ion-icon name="ios-card"></ion-icon>
+      </button>
+    </div>
+  </ion-card>
   <form #patenteForm="ngForm" >
     <ion-card *ngIf="exist">
         <ion-list>

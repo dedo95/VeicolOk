@@ -5,6 +5,8 @@
     "Famigliare": "Family Member",
     "Famiglia": "Family",
     "PSD_NO": "Forgot Your Password?",
+    "PASSWORD_REQUIRED":"Password Required",
+    "USERNAME_REQUIRED":"Username Required",
     "REGISTRATI": "Sign Up",
     "Obj": "Object",
     "Msg": "Message",
@@ -17,6 +19,7 @@
     "Agg_car": "Add Vehicles",
     "Info_v": "Vehicle Information",
     "Home":"Vehicles",
+    "NO_VEICOLO":"No Vehicles",
     "LINGUA": "Language",
     "ITALIANO": "Italian",
     "INGLESE": "English",
@@ -26,7 +29,9 @@
     "Nome": "Name",
     "Cognome":"Surname",
     "Crea Famiglia": "Create Family",
+    "NO_FAM":"No Family",
     "Crea Patente": "Create  Driving License",
+    "NO_PATENTE":"No Driving License",
     "LOGIN_TITLE": "Login",
     "LOGIN_ERROR_TITLE": "Login error",
     "LOGIN_ERROR_SUB_TITLE": "Username and/or password Wrong!",
@@ -50,6 +55,7 @@
     "CANCEL_BUTTON": "Cancel",
     "DELETE_VEICOLO_TITLE":"Delete Veicle",
     "DELETE_VEICOLO_MESSAGE": "Do you want to delete the vehicle?",
+    "CREA_VEICOLO": "Create Veicle",
     "CREATE_BUTTON":"Create",
     "IMPORTO":"Amount",
     "SCADENZA":"Expiration Date",
@@ -76,6 +82,7 @@
     "DELETE_MEMBRO_TITLE":"Delete Member",
     "DELETE_MEMBRO_MSG": "Are you sure you want to delete the selected member ?",
     "CITTA": "City",
-    "NOTE": "Notes"
+    "NOTE": "Notes",
+    "NO_INT": "No Intervention"
 
 }
