@@ -15,9 +15,11 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
   <ion-card>
     <ion-item no-lines>
       <ion-avatar (click)="modifica()">
@@ -38,7 +40,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label style="color:black">{{'DATA'|translate}} </ion-label>
+          <ion-label style="color:black">{{'DATA_NASCITA'|translate}} </ion-label>
           <ion-input  color="black"  style="font-weight:bold;" name="nascita" required [(ngModel)]="utente.d_nascita" #d_nascita="ngModel"> </ion-input>
         </ion-item>
 
@@ -48,4 +50,5 @@
       </ion-list>
     </form>
   </ion-card>
+
 </ion-content>

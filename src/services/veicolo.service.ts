@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {URL, UTENTE_STORAGE} from '../constants';
 import { Storage } from '@ionic/storage';
+import {Observable} from "rxjs";
+
+import {URL} from '../constants';
 import {UtenteService} from "./utente.service";
 import {Veicolo} from "../model/veicolo.model";
-import {Observable} from "rxjs";
 
 
 @Injectable()

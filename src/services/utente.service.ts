@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { Utente } from '../model/utente.model';
-import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
 import { Storage } from '@ionic/storage';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+
+import 'rxjs/add/operator/map';
+import {AUTH_TOKEN, URL, UTENTE_STORAGE, X_AUTH} from '../constants';
 import {Veicolo} from "../model/veicolo.model";
-import {V} from "@angular/core/src/render3";
+import { Utente } from '../model/utente.model';
 
 
 @Injectable()
@@ -76,8 +76,9 @@ export class UtenteService {
         return resp.body;
       });
   }
-
 }
+
+
 export interface Account {
     username: string;
     password: string;

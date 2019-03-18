@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {TranslateService} from "@ngx-translate/core";
+import {NgForm} from "@angular/forms";
+
 import {Scadenza} from "../../model/scadenza.model";
 import {ScadenzaService} from "../../services/scadenza.service";
-import {NgForm} from "@angular/forms";
 import {Veicolo} from "../../model/veicolo.model";
-import {TranslateService} from "@ngx-translate/core";
+
 
 
 @IonicPage()
@@ -40,9 +42,7 @@ export class ScadenzaPage {
     this.scadenzaService.getScadenza(this.navParams.get('targa'),this.navParams.get('scadenza')).subscribe(nuovascadenza=>{
       if (nuovascadenza!==null) {
         this.scadenze = nuovascadenza;
-        console.log(this.scadenze);
         this.s = nuovascadenza;
-        console.log(this.s);
         this.isempty = true;
       }
     });
@@ -60,7 +60,8 @@ export class ScadenzaPage {
   crea(creaForm:NgForm){
     this.scadenze.descrizione_scadenza=this.title;
     this.scadenze.importo=creaForm.value.importo;
-    this.scadenze.data=creaForm.value.data;
+    let date=new Date(creaForm.value.data);
+    this.scadenze.data=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
     this.scadenze.veicolo=this.veicolo;
     this.scadenzaService.creaScadenza(this.scadenze).subscribe((nuovaScadenza:Scadenza)=>{
       this.s=nuovaScadenza;
@@ -124,6 +125,5 @@ export class ScadenzaPage {
     });
     alert.present();
   }
-
 
 }

@@ -15,6 +15,7 @@
 </ion-header>
 
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -22,7 +23,7 @@
   <ion-card *ngIf="!exist">
     <div text-center>
       <ion-title>{{'NO_VEICOLO'|translate}}</ion-title>
-      <button ion-button icon-only  (click)="go_aggiungi_veicolo()">
+      <button ion-button icon-right (click)="go_aggiungi_veicolo()">
         {{'CREA_VEICOLO'|translate}}
         <ion-icon name="ios-car"></ion-icon>
       </button>

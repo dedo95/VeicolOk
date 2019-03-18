@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import {AlertController, ItemSliding, NavController, NavParams, Refresher} from 'ionic-angular';
+import {Storage} from "@ionic/storage";
+import {DomSanitizer} from "@angular/platform-browser";
+import {TranslateService} from "@ngx-translate/core";
+
 import { AggiungiveicoloPage } from '../aggiungiveicolo/aggiungiveicolo';
 import { InfoVeicoloPage } from '../info-veicolo/info-veicolo';
 import { UtenteService } from '../../services/utente.service';
 import { VeicoloService } from '../../services/veicolo.service';
-import {Storage} from "@ionic/storage";
 import {Veicolo} from "../../model/veicolo.model";
-import {DomSanitizer} from "@angular/platform-browser";
-import {TranslateService} from "@ngx-translate/core";
+
 
 @Component({
   selector: 'page-home',
@@ -40,6 +42,7 @@ export class HomePage {
   ionViewWillEnter(){
     this.listaVeicoli();
   }
+
 
   doRefresh(refresher: Refresher){
     this.listaVeicoli();

@@ -37,7 +37,7 @@
     "LOGIN_ERROR_TITLE": "Errore Login",
     "Registrazione_Title": "Registrazione Completata",
     "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login",
-    "DATA": "Data di Nascita :",
+    "DATA_NASCITA": "Data di Nascita :",
     "DESCRIZIONE": "Descrizione",
     "TARGA": "Targa",
     "ANNO": "Anno Immatricolazione",
@@ -83,6 +83,6 @@
     "DELETE_MEMBRO_MSG": "Sei sicuro di voler eliminare il membro selezionato ?",
     "CITTA":"Città",
     "NOTE":"Note",
-    "NO_INT": "Nessun Intervento"
-
+    "NO_INT": "Nessun Intervento",
+    "DATA": "Data"
 }

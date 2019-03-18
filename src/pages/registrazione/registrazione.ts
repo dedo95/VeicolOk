@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {NgForm} from "@angular/forms";
+import { TranslateService} from "@ngx-translate/core";
+
 import {UtenteService} from "../../services/utente.service";
 import {LoginPage} from "../login/login";
-import { TranslateService} from "@ngx-translate/core";
+
 import {Utente} from "../../model/utente.model";
 
 
@@ -15,7 +17,6 @@ import {Utente} from "../../model/utente.model";
 export class RegistrazionePage {
 
   user:Utente=new Utente();
-
   registrazioneTitle: string;
   registrazioneSubTitle: string;
 
@@ -39,7 +40,8 @@ export class RegistrazionePage {
   onLogin(loginForm: NgForm){
     this.user.nome=loginForm.value.nome;
     this.user.cognome=loginForm.value.cognome;
-    this.user.d_nascita=loginForm.value.nascita;
+    let date=new Date(loginForm.value.nascita);
+    this.user.d_nascita=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
     this.user.email=loginForm.value.email;
     this.user.password=loginForm.value.password;
     this.utenteService.create(this.user);

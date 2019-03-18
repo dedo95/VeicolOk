@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  ActionSheetController,
-  IonicPage, Loading,
-  NavController,
-  NavParams,
-  Platform, Refresher
-} from 'ionic-angular';
-import {UtenteService} from "../../services/utente.service";
-import {Utente} from "../../model/utente.model";
+import {ActionSheetController, IonicPage, Loading, NavController, NavParams, Platform, Refresher} from 'ionic-angular';
 import {Camera} from '@ionic-native/camera';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import {Transfer} from "@ionic-native/transfer";
@@ -15,6 +7,10 @@ import { File } from '@ionic-native/file/ngx';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
+
+import {UtenteService} from "../../services/utente.service";
+import {Utente} from "../../model/utente.model";
+
 
 declare var cordova: any;
 @IonicPage()

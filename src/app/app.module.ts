@@ -42,7 +42,7 @@ import {ScadenzaPage} from "../pages/scadenza/scadenza";
 import {ScadenzaService} from "../services/scadenza.service";
 import {FamigliarePage} from "../pages/famigliare/famigliare";
 import { ListainterventiPage } from '../pages/listainterventi/listainterventi';
-import { AggiungiinterventoPage } from '../pages/aggiungiintervento/aggiungiintervento';
+import {InterventoPage} from "../pages/intervento/intervento";
 import {InterventoService} from "../services/intervento.service";
 
 
@@ -73,7 +73,7 @@ export function createTranslateLoader(http: HttpClient) {
     ScadenzaPage,
     FamigliarePage,
     ListainterventiPage,
-    AggiungiinterventoPage
+    InterventoPage
     
   ],
   imports: [
@@ -114,7 +114,7 @@ export function createTranslateLoader(http: HttpClient) {
     ScadenzaPage,
     FamigliarePage,
     ListainterventiPage,
-    AggiungiinterventoPage
+    InterventoPage
   ],
   providers: [
     StatusBar,

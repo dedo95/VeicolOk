@@ -10,13 +10,14 @@
 </ion-header>
 
 <ion-content padding center text-center>
+
   <form #loginform="ngForm" (ngSubmit)="login()" >
     <ion-list no-lines>
       <ion-item>
         <ion-icon name="md-mail" item-start></ion-icon>
         <ion-input name="email" placeholder="Email" type="email" clearInput required [(ngModel)]="account.username" name="username" #username="ngModel"></ion-input>
       </ion-item>
-      <p ion-text [hidden]="username.valid" color="primary" padding-left>
+      <p ion-text [hidden]="username.valid||username.pristine" color="primary" padding-left>
         {{ 'USERNAME_REQUIRED' | translate }}
       </p>
     
@@ -24,7 +25,7 @@
         <ion-icon name="md-lock" item-start></ion-icon>
         <ion-input placeholder="Password" type="password" name="password" clearInput [(ngModel)]="account.password" #password="ngModel" required></ion-input>
       </ion-item>
-      <p ion-text [hidden]="password.valid" color="primary" padding-left>
+      <p ion-text [hidden]="password.valid|| password.pristine" color="primary" padding-left>
           {{ 'PASSWORD_REQUIRED' |translate}}
       </p>
     </ion-list>
@@ -32,4 +33,5 @@
   </form>
   <ion-item text-center (click)="goRecupera()"><a href="#"> {{'PSD_NO' | translate}} </a></ion-item>
   <button ion-button full color="light" (click)="goRegister()" class="register_button"> {{'REGISTRATI' | translate}} </button>
+
 </ion-content>

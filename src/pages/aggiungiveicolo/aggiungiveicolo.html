@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title> {{'Agg_car' | translate}} </ion-title>
@@ -6,6 +5,7 @@
 </ion-header>
 
 <ion-content padding>
+
   <form #veicoloForm="ngForm" novalidate (ngSubmit)="creaVeicolo(veicoloForm)">
     <ion-item>
       <ion-input placeholder="Targa" name="targa" required [(ngModel)]="veicolo.targa" #targa="ngModel" type="text"></ion-input>
@@ -51,6 +51,7 @@
     </ion-item>
     <button ion-button full type="submit" [disabled]="!veicoloForm.form.valid"> Crea Veicolo </button>
   </form>
+
 </ion-content>
 
 

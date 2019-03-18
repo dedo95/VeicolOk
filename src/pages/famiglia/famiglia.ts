@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, ItemSliding, NavController, NavParams, Refresher} from 'ionic-angular';
+
 import { AggiungiMembroPage } from '../aggiungi-membro/aggiungi-membro';
 import {Famiglia} from "../../model/famiglia.model";
 import {FamigliaService} from "../../services/famiglia.service";
@@ -46,6 +47,22 @@ export class FamigliaPage {
         this.userImg=false;
       else this.userImg=true;
     });
+   this.getFamiglia();
+  }
+
+  ionViewWillEnter(){
+    this.getFamiglia();
+  }
+
+  openDetail(famigliare:Utente){
+    this.navCtrl.push(FamigliarePage,famigliare);
+  }
+
+  openProfilo(){
+    this.navCtrl.push(ProfiloPage);
+  }
+
+  getFamiglia(){
     this.famigliaService.getFamiglia().subscribe(famiglia=>{
       this.famiglia=famiglia;
       if(this.famiglia==null){
@@ -59,14 +76,19 @@ export class FamigliaPage {
     });
   }
 
-  ionViewWillEnter(){
-    this.famigliaService.getFamigliari().subscribe(famigliare=>{
-      this.users=famigliare;
-    });
-  }
-
   goAggiungi_Membro(){
     this.navCtrl.push(AggiungiMembroPage);
+  }
+
+  doRefresh(refresher: Refresher){
+    this.utenteService.getUtente().subscribe((utente)=>{
+      this.utente=utente;
+      if (utente.img.length===0)
+        this.userImg=false;
+      else this.userImg=true;
+    });
+    this.getFamiglia();
+    refresher.complete();
   }
 
   delete(famigliare, sliding:ItemSliding) {
@@ -109,14 +131,6 @@ export class FamigliaPage {
     alert.present();
   }
 
-  openDetail(famigliare:Utente){
-    this.navCtrl.push(FamigliarePage,famigliare);
-  }
-
-  openProfilo(){
-    this.navCtrl.push(ProfiloPage);
-  }
-
   async presentAlertPrompt() {
     const alert = await this.alertController.create({
       title:'crea famiglia',
@@ -151,16 +165,4 @@ export class FamigliaPage {
     await alert.present();
   }
 
-  doRefresh(refresher: Refresher){
-    this.utenteService.getUtente().subscribe((utente)=>{
-      this.utente=utente;
-      if (utente.img.length===0)
-        this.userImg=false;
-      else this.userImg=true;
-    });
-    this.famigliaService.getFamigliari().subscribe(famigliare =>{
-      this.users=famigliare;
-    });
-    refresher.complete();
-  }
 }

@@ -6,6 +6,7 @@ import {Transfer} from "@ionic-native/transfer";
 import { File } from '@ionic-native/file/ngx';
 import {DomSanitizer} from '@angular/platform-browser';
 import {HttpClient} from "@angular/common/http";
+
 import {VeicoloService} from "../../services/veicolo.service";
 import {Utente} from "../../model/utente.model";
 import {Veicolo} from "../../model/veicolo.model";
@@ -67,6 +68,18 @@ export class InfoVeicoloPage {
       });
   }
 
+  openPage(scadenza) {
+    this.navCtrl.push(scadenza.component,{scadenza:scadenza.title,targa:this.targa});
+  }
+
+  openInterventi(){
+    this.navCtrl.push(ListainterventiPage,this.targa);
+  }
+
+  doRefresh(refresher: Refresher){
+    refresher.complete();
+  }
+
   modifica() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
@@ -104,7 +117,6 @@ export class InfoVeicoloPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
-
     this.camera.getPicture(options).then((imageURI) => {
       let base64Image = "data:image/jpeg;base64,"+ imageURI;
       this.veicolo.img=base64Image;
@@ -112,18 +124,6 @@ export class InfoVeicoloPage {
     }, (err) => {
       console.log(err)
     });
-  }
-
-  doRefresh(refresher: Refresher){
-      refresher.complete();
-  }
-
-  openPage(scadenza) {
-    this.navCtrl.push(scadenza.component,{scadenza:scadenza.title,targa:this.targa});
-  }
-
-  openInterventi(){
-    this.navCtrl.push(ListainterventiPage,this.targa);
   }
 
 }

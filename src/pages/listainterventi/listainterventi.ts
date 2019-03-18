@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, ItemSliding, NavController, NavParams, Refresher} from 'ionic-angular';
-import { AggiungiinterventoPage } from '../aggiungiintervento/aggiungiintervento';
+
+import {InterventoPage} from '../intervento/intervento';
 import {Intervento} from "../../model/intervento.model";
 import {InterventoService} from "../../services/intervento.service";
 import {TranslateService} from "@ngx-translate/core";
@@ -31,18 +32,31 @@ export class ListainterventiPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListainterventiPage');
-    this.targa=this.navParams.data;
-    this.interventiService.getInterventi(this.targa).subscribe((data)=>{
-        this.interventi = data;
-        if (this.interventi.length!==0){
-          this.exist=true;
-        }
-      console.log(this.exist);
-    });
+    this.getInterventi();
   }
 
   openIntervento(intervento){
-    this.navCtrl.push(AggiungiinterventoPage,{'intervento':intervento,'targa':this.targa});
+    this.navCtrl.push(InterventoPage,{'intervento':intervento,'targa':this.targa});
+  }
+
+  ionViewWillEnter(){
+    this.getInterventi();
+  }
+
+  doRefresh(refresher: Refresher){
+    this.getInterventi();
+    refresher.complete();
+  }
+
+  getInterventi(){
+    this.targa=this.navParams.data;
+    this.interventiService.getInterventi(this.targa).subscribe((data)=>{
+      this.interventi = data;
+      if (this.interventi.length!==0){
+        this.exist=true;
+      }
+      console.log(this.exist);
+    });
   }
 
   elimina(intervento, sliding:ItemSliding){
@@ -84,19 +98,6 @@ export class ListainterventiPage {
       ]
     });
     alert.present();
-  }
-
-  ionViewWillEnter(){
-    this.interventiService.getInterventi(this.targa).subscribe(intervento=>{
-      this.interventi=intervento;
-    });
-  }
-
-  doRefresh(refresher: Refresher){
-    this.interventiService.getInterventi(this.targa).subscribe(intervento=>{
-      this.interventi=intervento;
-    });
-    refresher.complete();
   }
 
 }

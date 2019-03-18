@@ -37,7 +37,7 @@
     "LOGIN_ERROR_SUB_TITLE": "Username and/or password Wrong!",
     "Registrazione_Title": "Registrazione Completata",
     "Registrazione_SubTitle": "Registrazione completata con successo. Procedere con il Login",
-    "DATA": "Birth Date :",
+    "DATA_NASCITA": "Birth Date :",
     "DESCRIZIONE": "Description",
     "TARGA": "Number Plate",
     "ANNO": "Registration Year",
@@ -83,6 +83,6 @@
     "DELETE_MEMBRO_MSG": "Are you sure you want to delete the selected member ?",
     "CITTA": "City",
     "NOTE": "Notes",
-    "NO_INT": "No Intervention"
-
+    "NO_INT": "No Intervention",
+    "DATA":"Date"
 }

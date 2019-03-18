@@ -9,8 +9,8 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -35,9 +35,11 @@
   <ion-card *ngIf="!exist" align-items-center>
     <div text-center>
       <ion-title>{{'NO_INT'|translate}}</ion-title>
-      <button ion-button class="login_button" default  (click)="openIntervento()">
+      <button ion-button icon-right  default  (click)="openIntervento()">
         {{'CREATE_BUTTON'|translate}}
+        <ion-icon name="ios-construct-outline" item-start></ion-icon>
       </button>
     </div>
   </ion-card>
+
 </ion-content>

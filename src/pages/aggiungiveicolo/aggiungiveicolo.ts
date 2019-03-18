@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
-import { VeicoloService } from '../../services/veicolo.service';
 import { Storage } from '@ionic/storage';
+
+import { VeicoloService } from '../../services/veicolo.service';
 import {TabsPage} from "../tabs/tabs";
 import {Veicolo} from "../../model/veicolo.model";
 
@@ -19,13 +20,13 @@ export class AggiungiveicoloPage {
   constructor(public navCtrl: NavController,
               public veicoloService: VeicoloService,
               public storage: Storage) {
-
   }
 
   creaVeicolo(veicoloForm: NgForm) {
     this.veicolo.targa = veicoloForm.value.targa;
     this.veicolo.alimentazione = veicoloForm.value.alimentazione;
-    this.veicolo.anno_immatricolazione = veicoloForm.value.anno_immatricolazione;
+    let date=new Date(veicoloForm.value.anno_immatricolazione);
+    this.veicolo.anno_immatricolazione = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
     this.veicolo.cavalli = veicoloForm.value.cavalli;
     this.veicolo.cilindrata = veicoloForm.value.cilindrata;
     this.veicolo.colore = veicoloForm.value.colore;

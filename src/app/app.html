@@ -4,7 +4,7 @@
         <ion-toolbar>
             <ion-item class="user-menu" *ngIf="isLogged" (click)="goToProfilo()" no-lines style="text-align: center;">
                 <ion-avatar item-start>
-                    <img src="../assets/imgs/user.png" style="width: 60px;height: 60px;" *ngIf="image">
+                  <img src="../assets/imgs/user.png" style="width: 60px;height: 60px;" *ngIf="image">
                   <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(utente.img)"  style="width: 60px;height: 60px;" *ngIf="!image">
                   <div class="item-text-center item-text-wrap">{{utente.nome+' '+utente.cognome}}</div>
                 </ion-avatar>

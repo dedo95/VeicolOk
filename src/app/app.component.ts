@@ -6,8 +6,6 @@ import { LinguaService,Lingua } from '../services/lingua.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
-
-
 //Pages
 import { ContattaciPage } from '../pages/contattaci/contattaci';
 import { ChiSiamoPage } from '../pages/chi-siamo/chi-siamo';

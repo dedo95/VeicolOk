@@ -9,6 +9,7 @@
 
 
 <ion-content padding >
+
   <form #salvaForm="ngForm" *ngIf="isempty" novalidate>
     <ion-card>
       <ion-list >
@@ -47,7 +48,7 @@
 
         <ion-item >
           <ion-label>{{'IMPORTO'|translate}} € :</ion-label>
-          <ion-input color="black"  style="font-weight:bold;" name="importo" required [(ngModel)]="scadenze.importo" #importo="ngModel"></ion-input>
+          <ion-input color="black"  style="font-weight:bold;" name="importo" required [(ngModel)]="scadenze.importo" #importo="ngModel" type="number"></ion-input>
         </ion-item>
 
         <ion-item >
@@ -62,6 +63,7 @@
       </button>
     </div>
   </form>
+
 </ion-content>
 
 

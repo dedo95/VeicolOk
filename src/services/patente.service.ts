@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
+
 import {URL} from "../constants";
 import {Patente} from "../model/patente.model";
 

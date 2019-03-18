@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {AlertController, Events, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {HttpErrorResponse} from "@angular/common/http";
+import { TranslateService} from "@ngx-translate/core";
+
 import { RegistrazionePage } from '../registrazione/registrazione';
 import { RecuperaPswPage } from '../recupera-psw/recupera-psw';
 import { Account, UtenteService } from '../../services/utente.service';
-import {HttpErrorResponse} from "@angular/common/http";
 import {Utente} from "../../model/utente.model";
-import { TranslateService} from "@ngx-translate/core";
+
 
 @IonicPage()
 @Component({
@@ -26,6 +28,16 @@ export class LoginPage {
               public translateService: TranslateService) {
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+    this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
+      this.loginSubTitle = data;
+    });
+    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
+      this.loginTitle = data;
+    });
+  }
+
   login(){
       this.utenteService.login(this.account)
         .subscribe((utente: Utente) => {
@@ -37,16 +49,6 @@ export class LoginPage {
               this.showLoginError();
             }
           });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-    this.translateService.get('LOGIN_ERROR_SUB_TITLE').subscribe((data) => {
-      this.loginSubTitle = data;
-    });
-    this.translateService.get('LOGIN_ERROR_TITLE').subscribe((data) => {
-      this.loginTitle = data;
-    });
   }
 
   goRegister(){

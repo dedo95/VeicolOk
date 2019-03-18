@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import {AlertController, NavController, Refresher} from 'ionic-angular';
+import {NgForm} from "@angular/forms";
+import {TranslateService} from "@ngx-translate/core";
+
 import {PatenteService} from "../../services/patente.service";
 import {Patente} from "../../model/patente.model";
-import {NgForm} from "@angular/forms";
 import {Scadenza} from "../../model/scadenza.model";
-import {TranslateService} from "@ngx-translate/core";
+
 
 @Component({
   selector: 'page-patenet',
@@ -28,7 +30,6 @@ export class PatentePage {
               public patenteService:PatenteService,
               public alertController:AlertController,
               public translateService:TranslateService) {
-
   }
 
   ionViewDidLoad() {

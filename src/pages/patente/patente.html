@@ -12,6 +12,7 @@
 </ion-header>
 
 <ion-content padding style="text-align: center;">
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -19,7 +20,7 @@
   <ion-card *ngIf="!exist">
     <div text-center>
       <ion-title>{{'NO_PATENTE'|translate}}</ion-title>
-      <button ion-button icon-only  (click)="presentAlertPrompt2()">
+      <button ion-button icon-right  (click)="presentAlertPrompt2()">
         {{'Crea Patente' | translate}}
         <ion-icon name="ios-card"></ion-icon>
       </button>
@@ -59,4 +60,5 @@
         </button>
       </div>
     </form>
+
 </ion-content>
